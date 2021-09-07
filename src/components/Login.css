@@ -1,0 +1,50 @@
+.login {
+  background-color: #fafafa;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.login__container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0 50px 0;
+  /* max-width: 350px; */
+  /* flex-grow: 1; */
+}
+
+/* @font-face {
+  font-family: "Dancing Script";
+  src: url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+.signIn__logo {
+  /* font-family: "Dancing Script"; */
+  font-size: 30px;
+}
+
+.login__signIn__container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+}
+
+.login__signUp__container {
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+}
+
+footer {
+  padding-bottom: 50px;
+}
