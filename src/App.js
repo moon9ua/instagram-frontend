@@ -5,8 +5,10 @@ import HomePage from "./components/pages/HomePage";
 import SignUpPage from "./components/pages/SignUpPage";
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  html, body {
+    height: 100%;
     margin: 0;
+    background-color: #fafafa;
   }
 `;
 

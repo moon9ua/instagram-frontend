@@ -6,6 +6,8 @@ import Input from "../../atoms/Input";
 const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
   /* margin: 0; */
 `;
 
