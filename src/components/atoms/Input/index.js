@@ -6,6 +6,7 @@ const StyledInput = styled.input`
   border-radius: 3px;
   padding: 10px;
   margin: 5px 0 0 0;
+  /* width: 100%; */
 `;
 
 const Input = ({ placeholder }) => {

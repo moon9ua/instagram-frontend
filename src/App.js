@@ -1,17 +1,22 @@
 import React from "react";
-// import { HashRouter, Route } from "react-router-dom";
-import SignIn from "./components/organisms/SignIn";
-// import Home from "./components/pages/Home/Home";
-// import SignUp from "./components/pages/SignUp/SignUp";
+import { HashRouter, Route } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+import HomePage from "./components/pages/HomePage";
+import SignUpPage from "./components/pages/SignUpPage";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+  }
+`;
 
 function App() {
   return (
-    // <HashRouter>
-    //   <Route path="/" exact={true} component={Home} />
-    //   <Route path="/signup" exact={true} component={SignUp} />
-    // </HashRouter>
-
-    <SignIn />
+    <HashRouter>
+      <GlobalStyle />
+      <Route path="/" exact component={HomePage} />
+      <Route path="/signup" exact component={SignUpPage} />
+    </HashRouter>
   );
 }
 

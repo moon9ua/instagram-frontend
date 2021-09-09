@@ -7,26 +7,24 @@ import Box from "../../atoms/Box";
 import Logo from "../../atoms/Logo";
 import Form from "../../molecules/Form";
 
-const StyledSignIn = styled.div`
+const StyledSignUp = styled.div`
   width: 350px;
 `;
 
-// Link를 여기서 해줘도 되는지를 모르겠음... 전체적 설계를 어떻게 하지?
-
-const SignIn = () => {
+const SignUp = () => {
   return (
-    <StyledSignIn>
+    <StyledSignUp>
       <Box>
         <Logo />
-        <Form placeholderArr={["이메일", "비밀번호"]} btnText="로그인" />
+        <Form placeholderArr={["이메일", "성명", "사용자 이름", "비밀번호"]} btnText="가입" />
       </Box>
       <Box>
         <div>
-          계정이 없으신가요? <Link to="/signup">가입하기</Link>
+          계정이 있으신가요? <Link to="/">로그인</Link>
         </div>
       </Box>
-    </StyledSignIn>
+    </StyledSignUp>
   );
 };
 
-export default SignIn;
+export default SignUp;

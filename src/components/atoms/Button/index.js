@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   font-size: 14px;
   padding: 7px;
   margin: 15px 0 0 0;
+  /* width: 100%; */
 `;
 
 function Button({ children }) {
