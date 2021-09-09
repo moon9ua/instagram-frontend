@@ -1,12 +1,12 @@
 import React from "react";
-import "./style.css"; // styled-components 등으로 교체 가능
+import styled from "styled-components";
+
+const StyledLogo = styled.h1`
+  font-size: 30px;
+`;
 
 function Logo() {
-  return (
-    <div className="logo">
-      <h1>Instagram</h1>
-    </div>
-  );
+  return <StyledLogo>Instagram</StyledLogo>;
 }
 
 export default Logo;

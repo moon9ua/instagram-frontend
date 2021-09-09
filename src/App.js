@@ -1,7 +1,6 @@
 import React from "react";
 // import { HashRouter, Route } from "react-router-dom";
-
-import Login from "./components/molecules/Login";
+import SignIn from "./components/organisms/SignIn";
 // import Home from "./components/pages/Home/Home";
 // import SignUp from "./components/pages/SignUp/SignUp";
 
@@ -12,7 +11,7 @@ function App() {
     //   <Route path="/signup" exact={true} component={SignUp} />
     // </HashRouter>
 
-    <Login />
+    <SignIn />
   );
 }
 

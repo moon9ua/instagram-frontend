@@ -1,8 +1,19 @@
 import React from "react";
-import "./style.css";
+import styled from "styled-components";
 
-function Button({ text }) {
-  return <button className="button">{text}</button>;
+const StyledButton = styled.button`
+  background: #0095f7;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 7px;
+  margin: 15px 0 0 0;
+`;
+
+function Button({ children }) {
+  return <StyledButton className="button">{children}</StyledButton>;
 }
 
 export default Button;
