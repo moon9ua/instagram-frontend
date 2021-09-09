@@ -4,11 +4,10 @@ import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
 
 const StyledForm = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  /* margin: 0; */
 `;
 
 const Form = ({ inputList, btnText }) => {

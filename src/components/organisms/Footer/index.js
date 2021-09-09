@@ -3,11 +3,10 @@ import styled from "styled-components";
 import Span from "../../atoms/Span";
 
 const StyledFooter = styled.footer`
+  margin: 50px 0;
   span {
     padding: 0px 7px;
   }
-  /* height: 10%; */
-  margin: 50px 0;
 `;
 
 function Footer() {

@@ -4,7 +4,7 @@ import LoginLowerBox from "../../molecules/LoginLowerBox";
 import LoginUpperBox from "../../molecules/LoginUpperBox";
 
 const StyledSignIn = styled.div`
-  width: 350px;
+  width: ${({ theme }) => theme.widths.loginBox};
 `;
 
 const SignIn = () => {

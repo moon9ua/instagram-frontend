@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.input`
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
+  width: 270px;
   padding: 10px;
   margin: 3px 0;
-  width: 270px;
+  border: 1px solid ${({ theme }) => theme.colors.borderGray};
+  border-radius: 3px;
   box-sizing: border-box;
 `;
 
