@@ -2,14 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledBox = styled.div`
-  background-color: #ffffff;
-  border: 1px solid #dbdbdb;
-  padding: 25px;
-  margin: 10px;
+  width: 100%;
+  padding: 10px 0px;
+  margin: 0 0 10px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.borderGray};
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
+  align-items: center;
+  box-sizing: border-box;
 `;
 
 const Box = ({ children }) => {

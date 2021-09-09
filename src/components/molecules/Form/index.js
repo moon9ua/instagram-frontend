@@ -4,15 +4,16 @@ import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
 
 const StyledForm = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  /* margin: 0; */
+  align-items: center;
 `;
 
-const Form = ({ placeholderArr, btnText }) => {
+const Form = ({ inputList, btnText }) => {
   return (
     <StyledForm>
-      {placeholderArr.map((val, idx) => {
+      {inputList.map((val, idx) => {
         return <Input placeholder={val} key={idx} />;
       })}
       <Button>{btnText}</Button>
