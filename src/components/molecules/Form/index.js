@@ -11,10 +11,10 @@ const StyledForm = styled.div`
   /* margin: 0; */
 `;
 
-const Form = ({ placeholderArr, btnText }) => {
+const Form = ({ inputList, btnText }) => {
   return (
     <StyledForm>
-      {placeholderArr.map((val, idx) => {
+      {inputList.map((val, idx) => {
         return <Input placeholder={val} key={idx} />;
       })}
       <Button>{btnText}</Button>
