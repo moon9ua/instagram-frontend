@@ -1,12 +1,18 @@
 import React from "react";
-import Login from "./components/Login";
-import "./App.css";
+// import { HashRouter, Route } from "react-router-dom";
+
+import Login from "./components/molecules/Login";
+// import Home from "./components/pages/Home/Home";
+// import SignUp from "./components/pages/SignUp/SignUp";
 
 function App() {
   return (
-    <div>
-      <Login />
-    </div>
+    // <HashRouter>
+    //   <Route path="/" exact={true} component={Home} />
+    //   <Route path="/signup" exact={true} component={SignUp} />
+    // </HashRouter>
+
+    <Login />
   );
 }
 

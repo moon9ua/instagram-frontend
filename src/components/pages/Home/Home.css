@@ -1,4 +1,4 @@
-.login {
+.home {
   background-color: #fafafa;
   height: 100vh;
   display: flex;
@@ -7,17 +7,14 @@
   align-items: center;
 }
 
-main {
+.home__main {
   display: flex;
   flex-direction: row;
+  flex-direction: column;
 }
 
-.login__container {
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0 50px 0;
-  /* max-width: 350px; */
-  /* flex-grow: 1; */
+.home__logo {
+  font-size: 30px;
 }
 
 /* @font-face {
@@ -27,12 +24,7 @@ main {
   font-style: normal;
 } */
 
-.signIn__logo {
-  /* font-family: "Dancing Script"; */
-  font-size: 30px;
-}
-
-.login__signIn__container {
+.home__sign-in {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -40,11 +32,11 @@ main {
   border: 1px solid #dbdbdb;
 }
 
-.login__signUp__container {
+.home__sign-up {
   background-color: #ffffff;
   border: 1px solid #dbdbdb;
 }
 
-footer {
+.home__footer {
   padding-bottom: 50px;
 }
