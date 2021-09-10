@@ -1,17 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
-import GlobalFonts from "./style/fonts/fonts";
-import GlobalStyle from "./style/GlobalStyle";
-import theme from "./style/theme";
+import rootReducer from "./modules";
+import GlobalFonts from "./styles/GlobalFonts";
+import GlobalStyle from "./styles/GlobalStyle";
+import theme from "./styles/theme";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <GlobalFonts />
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

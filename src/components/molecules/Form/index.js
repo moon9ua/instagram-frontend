@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;

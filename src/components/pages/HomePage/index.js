@@ -4,7 +4,7 @@ import SignIn from "../../organisms/SignIn";
 import HomeTemplate from "../../templates/HomeTemplate";
 
 const Home = () => {
-  return <HomeTemplate context={<SignIn />} footer={<Footer />}></HomeTemplate>;
+  return <HomeTemplate context={<SignIn />} footer={<Footer />} />;
 };
 
 export default Home;
