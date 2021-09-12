@@ -1,34 +1,55 @@
 import { register } from "../utils/api";
 
 // action 타입
-const SIGNUP = "user/SIGNUP";
+const SIGNIN = "session/SIGNIN";
+const SIGNUP = "session/SIGNUP";
+const CHANGE_SIGNIN = "session/CHANGE_SIGNIN";
 
 // action 생성 함수
-export const signUp = (session) => ({ type: SIGNUP, session });
+export const signIn = (signInFormWithRes) => ({ type: SIGNIN, signInFormWithRes });
+export const signUp = () => ({ type: SIGNUP });
+export const changeSignIn = (newKey, newValue) => ({ type: CHANGE_SIGNIN, newKey, newValue });
 
 // thunk 함수
+export const signInAsync = (signInForm) => async (dispatch) => {
+  const token = await register(signInForm); // token말고 아마 email이랑 name도 이때 받아올듯. 같이 넣어줘야.
+  dispatch(signIn({ ...signInForm, token }));
+};
 export const signUpAsync = (userInfo) => async (dispatch) => {
-  const token = await register(userInfo);
-  dispatch(signUp({ token, userInfo }));
+  //
 };
 
-// 이거 구조도 모르겠음. session으로 한번 더 감싸는게 맞는건가?
 const initialState = {
-  session: {
-    token: "",
-    userInfo: {
-      user: "",
-      name: "",
-      password: "",
-      email: "",
-    },
-  },
+  isLogined: false,
+  token: "",
+  username: "",
+  name: "",
+  password: "",
+  email: "",
+  signInForm: {},
+  signUpForm: {},
 };
 
 export default function session(state = initialState, action) {
   switch (action.type) {
+    case SIGNIN:
+      return {
+        ...state,
+        isLogined: true,
+        ...action.signInFormWithRes,
+      };
     case SIGNUP:
-      return { session: { ...action.session } }; // 이게 되나?
+      // return { ...action.session }; // 이게 되나?
+      return "";
+    case CHANGE_SIGNIN:
+      return {
+        ...state,
+        signInForm: {
+          ...state.signInForm,
+          [action.newKey]: action.newValue, // ES6: 변수로 key를 할당하기
+        },
+      };
+
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import session from "./session";
 
 const rootReducer = combineReducers({
-  user: session,
+  session,
 });
 
 export default rootReducer;

@@ -1,4 +1,4 @@
-const REGISTER = "localhost:8080/api/register";
+// const REGISTER = "localhost:8080/api/register";
 
 const wait = (timeToDelay) => new Promise((resolve) => setTimeout(resolve, timeToDelay)); // 임시
 
