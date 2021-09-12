@@ -10,8 +10,8 @@ const StyledInput = styled.input`
   box-sizing: border-box;
 `;
 
-const Input = ({ placeholder }) => {
-  return <StyledInput className="input" placeholder={placeholder}></StyledInput>;
+const Input = ({ placeholder, name, onChange }) => {
+  return <StyledInput placeholder={placeholder} name={name} onChange={onChange}></StyledInput>;
 };
 
 export default Input;

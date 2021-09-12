@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import Satisfy from "./Satisfy-Regular.woff";
+import Satisfy from "./fonts/Satisfy-Regular.woff";
 
 const GlobalFonts = createGlobalStyle`
   @font-face {
