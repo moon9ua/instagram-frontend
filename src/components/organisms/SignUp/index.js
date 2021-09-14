@@ -1,6 +1,8 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { changeSignUp, signUpAsync } from "../../../modules/session";
 import Box from "../../atoms/Box";
 import Logo from "../../atoms/Logo";
 import SignUpForm from "../../molecules/SignUpForm";
@@ -15,20 +17,17 @@ const StyledSpan = styled.span`
 `;
 
 const SignUp = () => {
-  // const user = useSelector((state) => state.user);
-  // const dispatch = useDispatch();
-
-  const onSubmit = (userInfo) => {
-    // console.log(text);
-    // console.log(userInfo);
-    // console.log(user);
-    // console.log(dispatch);
-    // dispatch(signUpAsync(userInfo));
-  };
+  const dispatch = useDispatch();
+  const session = useSelector((state) => state.session);
 
   const onChange = (e) => {
-    console.log("value:", e.target.value);
-    console.log("name:", e.target.name);
+    const { name, value } = e.target;
+    dispatch(changeSignUp(name, value));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signUpAsync(session.signUpForm));
   };
 
   return (
