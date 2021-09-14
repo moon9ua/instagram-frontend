@@ -1,8 +1,8 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { changeSignIn, signIn, signInAsync, signUp } from "../../../modules/session";
+import { signInAsync } from "../../../modules/session";
 import Box from "../../atoms/Box";
 import Logo from "../../atoms/Logo";
 import SignInForm from "../../molecules/SignInForm";
@@ -16,25 +16,35 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
+const ErrorSpan = styled.span``;
+
 const SignIn = () => {
   const dispatch = useDispatch();
-  const session = useSelector((state) => state.session);
+  // const session = useSelector((state) => state.session);
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    dispatch(changeSignIn(name, value));
+  const [errMsg, setErrMsg] = useState("");
+
+  const errorSpan = () => {
+    return errMsg ? <ErrorSpan>{errMsg}</ErrorSpan> : null;
   };
 
   const onSubmit = (e) => {
     e.preventDefault(); // 이걸 안하면 주소에 query(맞나?)가 붙어버린다!
-    dispatch(signInAsync(session.signInForm));
+
+    dispatch(
+      signInAsync({
+        username: e.target[0].value,
+        password: e.target[1].value,
+      })
+    );
   };
 
   return (
     <StyledSignIn onSubmit={onSubmit}>
       <Box>
         <Logo />
-        <SignInForm onChange={onChange} />
+        <SignInForm />
+        {errorSpan()}
       </Box>
       <Box>
         <StyledSpan>

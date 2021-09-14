@@ -1,6 +1,5 @@
 // const ENDPOINT = "http://localhost:8080/api/";
 const ENDPOINT = "/api/";
-
 const LOGIN = "login";
 const REGISTER = "register";
 
@@ -10,15 +9,13 @@ export const loginAPI = async (loginInfo) => {
   let response = await fetch(ENDPOINT + LOGIN, {
     method: "POST",
     body: JSON.stringify(loginInfo),
-    // mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      // "Access-Control-Allow-Origin": "*",
     },
   });
 
   if (response.status > 400) {
-    throw new Error(`loginAPI: ${response.status}`);
+    throw new Error(`아이디와 비밀번호를 확인하세요.`);
   }
 
   const { token } = await response.json();
@@ -35,8 +32,8 @@ export const registerAPI = async (registerInfo) => {
   });
 
   if (response.status >= 400) {
-    throw new Error(`registerAPI: ${response.status}`);
+    throw new Error(`가입에 실패했습니다. 다시 시도하십시오.`);
   }
 
-  console.log(response); // 나중에 지워야
+  console.log(response);
 };

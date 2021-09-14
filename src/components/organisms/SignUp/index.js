@@ -20,21 +20,29 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const session = useSelector((state) => state.session);
 
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    dispatch(changeSignUp(name, value));
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUpAsync(session.signUpForm));
+
+    dispatch(
+      signUpAsync({
+        email: e.target[0].value,
+        name: e.target[1].value,
+        username: e.target[2].value,
+        password: e.target[3].value,
+      })
+    );
+
+    e.target[0].value = "";
+    e.target[1].value = "";
+    e.target[2].value = "";
+    e.target[3].value = "";
   };
 
   return (
     <StyledSignUp onSubmit={onSubmit}>
       <Box>
         <Logo />
-        <SignUpForm onChange={onChange} />
+        <SignUpForm />
       </Box>
       <Box>
         <StyledSpan>

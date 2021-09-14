@@ -10,13 +10,13 @@ const StyledSignUpForm = styled.form`
   align-items: center;
 `;
 
-const SignUpForm = ({ onChange }) => {
+const SignUpForm = () => {
   return (
     <StyledSignUpForm>
-      <Input placeholder="이메일 주소" name="email" onChange={onChange} />
-      <Input placeholder="성명" name="name" onChange={onChange} />
-      <Input placeholder="사용자 이름" name="username" onChange={onChange} />
-      <Input placeholder="비밀번호" name="password" onChange={onChange} />
+      <Input placeholder="이메일 주소" name="email" />
+      <Input placeholder="성명" name="name" />
+      <Input placeholder="사용자 이름" name="username" />
+      <Input placeholder="비밀번호" name="password" />
       <Button>가입</Button>
     </StyledSignUpForm>
   );
