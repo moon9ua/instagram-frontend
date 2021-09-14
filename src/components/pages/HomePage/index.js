@@ -8,11 +8,11 @@ import HomeTemplate from "../../templates/HomeTemplate";
 const Home = () => {
   const session = useSelector((state) => state.session);
 
-  if (session.isLogined) {
-    return <HomeTemplate context={<TmpOrg />} fotter={<Footer />} />;
-  } else {
-    return <HomeTemplate context={<SignIn />} footer={<Footer />} />;
-  } // 내가 생각한 방법인데... 이게 맞을까? re-render에 대해 잘 몰라서 원리를 모르겠다.
+  return session.isLogined ? (
+    <HomeTemplate context={<TmpOrg />} footer={<Footer />} />
+  ) : (
+    <HomeTemplate context={<SignIn />} footer={<Footer />} />
+  );
 };
 
 export default Home;

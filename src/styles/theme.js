@@ -26,11 +26,27 @@ const widths = {
   loginBox: px(350),
 };
 
+const inputForHome = {
+  width: px(270),
+  "background-color": colors.backgroundGray,
+  padding: px(10),
+  "border-color": colors.borderGray,
+};
+
+const inputForSearch = {
+  width: px(200),
+  "background-color": colors.white,
+  padding: "5px 0",
+  "border-color": colors.borderGray,
+};
+
 const theme = {
   fontSizes,
   colors,
   fonts,
   widths,
+  inputForHome,
+  inputForSearch,
 };
 
 export default theme;
