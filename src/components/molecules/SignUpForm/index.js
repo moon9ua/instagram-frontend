@@ -22,4 +22,6 @@ const SignUpForm = () => {
   );
 };
 
+// value="" state랑 연결
+
 export default SignUpForm;

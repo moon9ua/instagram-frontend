@@ -11,15 +11,20 @@ const StyledInput = styled.input`
 `;
 
 const Input = ({ placeholder, name }) => {
-  // const Input = ({ placeholder, name }) => {
-  // const [input, setInput] = useState("");
+  const [value, setValue] = useState("");
 
-  // const onChange = (e) => {
-  //   // console.log(e.value, e.name);
-  //   console.log(e.target.value, e.target.name);
-  // };
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
 
-  return <StyledInput placeholder={placeholder} name={name}></StyledInput>;
+  return (
+    <StyledInput
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+    ></StyledInput>
+  );
   // return <StyledInput placeholder={placeholder} name={name}></StyledInput>;
 };
 

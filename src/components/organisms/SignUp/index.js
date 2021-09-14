@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { changeSignUp, signUpAsync } from "../../../modules/session";
+import { removeError, signUp } from "../../../modules/session";
 import Box from "../../atoms/Box";
 import Logo from "../../atoms/Logo";
 import SignUpForm from "../../molecules/SignUpForm";
@@ -16,39 +16,61 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
+const ErrorSpan = styled.span`
+  font-size: ${({ theme }) => theme.fontSizes.m};
+  color: ${({ theme }) => theme.colors.red};
+  margin: 10px 0;
+`;
+
+const LoadingSpan = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+`;
+
 const SignUp = () => {
   const dispatch = useDispatch();
-  const session = useSelector((state) => state.session);
+  const { loading, error } = useSelector((state) => state.session);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     dispatch(
-      signUpAsync({
-        email: e.target[0].value,
-        name: e.target[1].value,
-        username: e.target[2].value,
-        password: e.target[3].value,
+      signUp({
+        email: e.target.email.value,
+        name: e.target.name.value,
+        username: e.target.username.value,
+        password: e.target.password.value,
       })
     );
+  };
 
-    e.target[0].value = "";
-    e.target[1].value = "";
-    e.target[2].value = "";
-    e.target[3].value = "";
+  const onClickLink = () => {
+    dispatch(removeError());
   };
 
   return (
     <StyledSignUp onSubmit={onSubmit}>
-      <Box>
-        <Logo />
-        <SignUpForm />
-      </Box>
-      <Box>
-        <StyledSpan>
-          계정이 있으신가요? <Link to="/">로그인</Link>
-        </StyledSpan>
-      </Box>
+      {loading ? (
+        <LoadingSpan>Loading...</LoadingSpan>
+      ) : (
+        <>
+          <Box>
+            <Logo />
+            <SignUpForm />
+            {error ? <ErrorSpan>{error}</ErrorSpan> : null}
+          </Box>
+          <Box>
+            <StyledSpan>
+              계정이 있으신가요?{" "}
+              <Link to="/" onClick={onClickLink}>
+                로그인
+              </Link>
+            </StyledSpan>
+          </Box>
+        </>
+      )}
     </StyledSignUp>
   );
 };
