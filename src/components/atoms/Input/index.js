@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+/* return `
+width: ${chosenTheme.width};
+background-color: ${chosenTheme["background-color"]};
+padding: ${chosenTheme.padding};
+border: 1px solid ${chosenTheme["border-color"]};
+`; */
+
 const StyledInput = styled.input`
-  ${({ themeName, theme }) => {
+  ${({ theme, themeName }) => {
     const chosenTheme = theme[themeName];
-    return `
-          width: ${chosenTheme.width};
-          background-color: ${chosenTheme["background-color"]};
-          padding: ${chosenTheme.padding};
-          border: 1px solid ${chosenTheme["border-color"]};
-          `;
+    return Object.entries(chosenTheme)
+      .map((val) => {
+        const [key, value] = val;
+        return `${key}: ${value};`;
+      })
+      .join("");
   }};
-  margin: 3px 0;
+
   border-radius: 3px;
   box-sizing: border-box;
 `;

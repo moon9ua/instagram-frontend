@@ -12,6 +12,7 @@ import Icon from "../../atoms/Icon";
 const StyledUl = styled.ul`
   display: flex;
   list-style: none;
+  margin-left: -40px;
 `;
 
 const IconList = () => {

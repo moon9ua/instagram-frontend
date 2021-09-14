@@ -5,6 +5,7 @@ const fontSizes = {
   m: px(14),
   l: px(20),
   xl: px(30),
+  navTitle: px(20),
   title: px(35),
 };
 
@@ -30,14 +31,16 @@ const inputForHome = {
   width: px(270),
   "background-color": colors.backgroundGray,
   padding: px(10),
-  "border-color": colors.borderGray,
+  border: `1px solid ${colors.borderGray}`,
+  margin: "3px 0",
 };
 
 const inputForSearch = {
   width: px(200),
-  "background-color": colors.white,
+  "background-color": colors.backgroundGray,
   padding: "5px 0",
-  "border-color": colors.borderGray,
+  border: `1px solid ${colors.borderGray}`,
+  margin: "0px 10px",
 };
 
 const theme = {

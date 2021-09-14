@@ -5,7 +5,7 @@ const StyledNavAndFooter = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
 `;
 
@@ -15,7 +15,6 @@ const NavAndFooter = ({ nav, context, footer }) => {
       {nav}
       {context}
       {footer}
-      <span>테스트중입니다...^0^</span>
     </StyledNavAndFooter>
   );
 };

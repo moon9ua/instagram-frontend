@@ -5,31 +5,31 @@ import Logo from "../../atoms/Logo";
 import IconList from "../../molecules/IconList";
 
 const StyledNavBar = styled.nav`
+  width: 100%;
+  max-width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-// const StyledSearch = styled.div`
-//   /* width: 180px; */
-// `;
-
-// const Search = () => {
-//   return (
-//     <StyledSearch>
-//       <input />
-//     </StyledSearch>
-//   );
-// };
+const StyledNavBarContainer = styled.div`
+  width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderGray};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.white};
+`;
 
 const NavBar = () => {
   return (
-    <StyledNavBar>
-      <Logo />
-      {/* <Search /> */}
-      <Input themeName="inputForSearch" />
-      <IconList />
-    </StyledNavBar>
+    <StyledNavBarContainer>
+      <StyledNavBar>
+        <Logo size="navTitle" />
+        <Input themeName="inputForSearch" />
+        <IconList />
+      </StyledNavBar>
+    </StyledNavBarContainer>
   );
 };
 
