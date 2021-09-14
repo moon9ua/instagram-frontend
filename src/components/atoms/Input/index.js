@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.input`
@@ -10,8 +10,22 @@ const StyledInput = styled.input`
   box-sizing: border-box;
 `;
 
-const Input = ({ placeholder, name, onChange }) => {
-  return <StyledInput placeholder={placeholder} name={name} onChange={onChange}></StyledInput>;
+const Input = ({ placeholder, name }) => {
+  const [value, setValue] = useState("");
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  return (
+    <StyledInput
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+    ></StyledInput>
+  );
+  // return <StyledInput placeholder={placeholder} name={name}></StyledInput>;
 };
 
 export default Input;

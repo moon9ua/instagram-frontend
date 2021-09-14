@@ -1,24 +1,39 @@
-// const REGISTER = "localhost:8080/api/register";
+// const ENDPOINT = "http://localhost:8080/api/";
+const ENDPOINT = "/api/";
+const LOGIN = "login";
+const REGISTER = "register";
 
-const wait = (timeToDelay) => new Promise((resolve) => setTimeout(resolve, timeToDelay)); // 임시
+// const wait = (timeToDelay) => new Promise((resolve) => setTimeout(resolve, timeToDelay)); // 임시
 
-export const register = async (user) => {
-  try {
-    /*
-    const response = await fetch(REGISTER, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(user),
-    });
-    const result = await response.json();
-    return result; // result.message인가??? 나중에 수정...
-    */
+export const loginAPI = async (loginInfo) => {
+  let response = await fetch(ENDPOINT + LOGIN, {
+    method: "POST",
+    body: JSON.stringify(loginInfo),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    await wait(1000);
-    return "i'm token!!!";
-  } catch (e) {
-    console.error(e); // 임시
+  if (response.status >= 400) {
+    throw new Error(`아이디와 비밀번호를 확인하세요.`);
   }
+
+  const { token } = await response.json();
+  return token;
+};
+
+export const registerAPI = async (registerInfo) => {
+  const response = await fetch(ENDPOINT + REGISTER, {
+    method: "POST",
+    body: JSON.stringify(registerInfo),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status >= 400) {
+    throw new Error(`가입에 실패했습니다. 다시 시도하십시오.`);
+  }
+
+  console.log(response);
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../atoms/Button";
 import Input from "../../atoms/Input";
@@ -10,11 +10,11 @@ const StyledSignInForm = styled.form`
   align-items: center;
 `;
 
-const SignInForm = ({ onChange }) => {
+const SignInForm = () => {
   return (
     <StyledSignInForm>
-      <Input placeholder="사용자 이름" name="username" onChange={onChange} />
-      <Input placeholder="비밀번호" name="password" onChange={onChange} />
+      <Input placeholder="사용자 이름" name="username" />
+      <Input placeholder="비밀번호" name="password" />
       <Button>로그인</Button>
     </StyledSignInForm>
   );
