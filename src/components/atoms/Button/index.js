@@ -13,8 +13,8 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-function Button({ children }) {
-  return <StyledButton className="button">{children}</StyledButton>;
+function Button({ className, children }) {
+  return <StyledButton className={className}>{children}</StyledButton>;
 }
 
 export default Button;

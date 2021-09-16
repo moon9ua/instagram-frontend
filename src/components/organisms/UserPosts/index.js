@@ -11,7 +11,6 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 15px;
 `;
 
 const UserPosts = (username) => {

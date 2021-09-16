@@ -6,7 +6,7 @@ const StyledDiv = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, 1fr));
-  gap: 20px;
+  gap: 30px;
   /* background-color: yellow; */
 `;
 

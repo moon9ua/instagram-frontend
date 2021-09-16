@@ -24,7 +24,7 @@ const StyledNav = styled.nav`
 
 const StyledInput = styled(Input)`
   width: 200px;
-  padding: 5px 0;
+  padding: 5px 5px;
 `;
 
 const StyledLogo = styled(Logo)`
@@ -39,7 +39,7 @@ const NavBar = () => {
         <Link to="/">
           <StyledLogo size="navTitle" />
         </Link>
-        <StyledInput />
+        <StyledInput placeholder="검색" />
         <IconList />
       </StyledNav>
     </StyledDiv>
