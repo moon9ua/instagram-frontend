@@ -19,8 +19,14 @@ const UserPosts = (username) => {
 
   return (
     <StyledDiv>
-      <UserProfile />
-      {loading ? <SpanLoading /> : <Thumbnails posts={posts} />}
+      {loading ? (
+        <SpanLoading />
+      ) : (
+        <>
+          <UserProfile />
+          <Thumbnails posts={posts} />
+        </>
+      )}
     </StyledDiv>
   );
 };
