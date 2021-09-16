@@ -1,7 +1,10 @@
 // const ENDPOINT = "http://localhost:8080/api/";
-const ENDPOINT = "/api/";
-const LOGIN = "login";
-const REGISTER = "register";
+const ENDPOINT = "/api";
+
+const LOGIN = "/login";
+const REGISTER = "/register";
+
+const POSTS = "/posts";
 
 // const wait = (timeToDelay) => new Promise((resolve) => setTimeout(resolve, timeToDelay)); // 임시
 
@@ -34,6 +37,29 @@ export const registerAPI = async (registerInfo) => {
   if (response.status >= 400) {
     throw new Error(`가입에 실패했습니다. 다시 시도하십시오.`);
   }
+};
 
-  console.log(response);
+export const createPostAPI = async (postInfo) => {
+  const response = await fetch(ENDPOINT + POSTS, {
+    method: "POST",
+    body: JSON.stringify(postInfo),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.status >= 400) {
+    throw new Error(`업로드에 실패했습니다. 다시 시도하십시오.`);
+  }
+};
+
+export const getPostsAPI = async (username) => {
+  const response = await fetch(ENDPOINT + POSTS + "/" + username);
+
+  if (response.status >= 400) {
+    throw new Error("포스트 불러오기를 실패했습니다. 다시 시도하십시오.");
+  }
+
+  const { posts } = await response.json();
+  return posts;
 };

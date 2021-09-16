@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { removeError, signUp } from "../../../modules/session";
 import Box from "../../atoms/Box";
 import Logo from "../../atoms/Logo";
+import Form from "../../molecules/Form";
 import SignUpForm from "../../molecules/SignUpForm";
 
 const StyledSignUp = styled.div`
@@ -50,6 +51,16 @@ const SignUp = () => {
     dispatch(removeError());
   };
 
+  const FormProps = {
+    inputInfo: {
+      email: "이메일 주소",
+      name: "성명",
+      username: "사용자 이름",
+      password: "비밀번호",
+    },
+    btnName: "로그인",
+  };
+
   return (
     <StyledSignUp onSubmit={onSubmit}>
       {loading ? (
@@ -58,7 +69,7 @@ const SignUp = () => {
         <>
           <Box>
             <Logo />
-            <SignUpForm />
+            <Form {...FormProps} />
             {error ? <ErrorSpan>{error}</ErrorSpan> : null}
           </Box>
           <Box>

@@ -19,6 +19,9 @@ const StyledInput = styled.input`
       .join("");
   }};
 
+  background-color: ${({ theme }) => theme.colors.backgroundGray};
+  border: 1px solid ${({ theme }) => theme.colors.borderGray};
+
   border-radius: 3px;
   box-sizing: border-box;
 `;

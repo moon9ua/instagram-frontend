@@ -8,7 +8,7 @@ function App() {
   return (
     <HashRouter>
       <Route path="/" exact component={HomePage} />
-      <Route path="/signup" exact component={SignUpPage} />
+      <Route path="/accounts/signup" exact component={SignUpPage} />
       <Route path="/:user" exact component={UserPage} />
     </HashRouter>
   );

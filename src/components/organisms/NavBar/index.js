@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../../atoms/Input";
 import Logo from "../../atoms/Logo";
@@ -25,7 +26,9 @@ const NavBar = () => {
   return (
     <StyledNavBarContainer>
       <StyledNavBar>
-        <Logo size="navTitle" />
+        <Link to="/">
+          <Logo size="navTitle" />
+        </Link>
         <Input themeName="inputForSearch" />
         <IconList />
       </StyledNavBar>

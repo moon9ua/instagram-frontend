@@ -7,6 +7,14 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: #fafafa;
   }
+
+  *:visited {
+    color: black;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;

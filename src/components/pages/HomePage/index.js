@@ -1,15 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Footer from "../../organisms/Footer";
+import NavBar from "../../organisms/NavBar";
 import SignIn from "../../organisms/SignIn";
-import TmpOrg from "../../organisms/TmpOrg";
 import HomeTemplate from "../../templates/HomeTemplate";
+import NavAndFooter from "../../templates/NavAndFooter";
 
 const Home = () => {
   const session = useSelector((state) => state.session);
 
   return session.isLogined ? (
-    <HomeTemplate context={<TmpOrg />} footer={<Footer />} />
+    <NavAndFooter nav={<NavBar />} context={<span>로그인 됐다!</span>} footer={<Footer />} />
   ) : (
     <HomeTemplate context={<SignIn />} footer={<Footer />} />
   );

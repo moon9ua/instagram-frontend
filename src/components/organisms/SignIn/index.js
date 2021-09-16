@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { removeError, signIn } from "../../../modules/session";
 import Box from "../../atoms/Box";
+import ErrorSpan from "../../atoms/ErrorSpan";
+import LoadingSpan from "../../atoms/LoadingSpan";
 import Logo from "../../atoms/Logo";
+import Form from "../../molecules/Form";
 import SignInForm from "../../molecules/SignInForm";
 
 const StyledSignIn = styled.div`
@@ -14,19 +17,6 @@ const StyledSignIn = styled.div`
 const StyledSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.m};
   margin: 10px 0;
-`;
-
-const ErrorSpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  color: ${({ theme }) => theme.colors.red};
-  margin: 10px 0;
-`;
-
-const LoadingSpan = styled.span`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: ${({ theme }) => theme.fontSizes.xl};
 `;
 
 const SignIn = () => {
@@ -48,21 +38,29 @@ const SignIn = () => {
     dispatch(removeError());
   };
 
+  const FormProps = {
+    inputInfo: {
+      username: "사용자 이름",
+      password: "비밀번호",
+    },
+    btnName: "로그인",
+  };
+
   return (
     <StyledSignIn onSubmit={onSubmit}>
       {loading ? (
-        <LoadingSpan>Loading...</LoadingSpan>
+        <LoadingSpan />
       ) : (
         <>
           <Box>
             <Logo />
-            <SignInForm />
+            <Form {...FormProps} />
             {error ? <ErrorSpan>{error}</ErrorSpan> : null}
           </Box>
           <Box>
             <StyledSpan>
               계정이 없으신가요?{" "}
-              <Link to="/signup" onClick={onClickLink}>
+              <Link to="/accounts/signup" onClick={onClickLink}>
                 가입하기
               </Link>
             </StyledSpan>

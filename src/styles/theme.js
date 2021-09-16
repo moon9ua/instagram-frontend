@@ -37,9 +37,7 @@ const inputForHome = {
 
 const inputForSearch = {
   width: px(200),
-  "background-color": colors.backgroundGray,
   padding: "5px 0",
-  border: `1px solid ${colors.borderGray}`,
   margin: "0px 10px",
 };
 

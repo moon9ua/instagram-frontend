@@ -14,7 +14,6 @@ const StyledBox = styled.div`
 `;
 
 const Box = ({ children }) => {
-  // return <div className="box">{content}</div>;
   return <StyledBox>{children}</StyledBox>;
 };
 
