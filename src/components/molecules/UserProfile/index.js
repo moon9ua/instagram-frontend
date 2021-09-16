@@ -37,7 +37,7 @@ const InfoContainer = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 50px;
 `;
 
 const RowContainer = styled.div`

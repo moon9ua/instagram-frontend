@@ -18,6 +18,10 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
+const LinkSpan = styled.span`
+  color: ${({ theme }) => theme.colors.blue};
+`;
+
 const SignIn = () => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.session);
@@ -60,7 +64,7 @@ const SignIn = () => {
             <StyledSpan>
               계정이 없으신가요?{" "}
               <Link to="/accounts/signup" onClick={onClickLink}>
-                가입하기
+                <LinkSpan>가입하기</LinkSpan>
               </Link>
             </StyledSpan>
           </Box>
