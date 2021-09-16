@@ -8,8 +8,8 @@ const StyledSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.xl};
 `;
 
-const LoadingSpan = () => {
+const SpanLoading = () => {
   return <StyledSpan>Loading...</StyledSpan>;
 };
 
-export default LoadingSpan;
+export default SpanLoading;

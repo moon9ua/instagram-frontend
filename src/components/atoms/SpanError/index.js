@@ -7,8 +7,8 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
-const ErrorSpan = ({ children }) => {
+const SpanError = ({ children }) => {
   return <StyledSpan>{children}</StyledSpan>;
 };
 
-export default ErrorSpan;
+export default SpanError;

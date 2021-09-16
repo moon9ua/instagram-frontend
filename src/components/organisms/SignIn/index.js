@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { removeError, signIn } from "../../../modules/session";
 import Box from "../../atoms/Box";
-import ErrorSpan from "../../atoms/ErrorSpan";
-import LoadingSpan from "../../atoms/LoadingSpan";
+import SpanError from "../../atoms/SpanError";
+import SpanLoading from "../../atoms/SpanLoading";
 import Logo from "../../atoms/Logo";
 import Form from "../../molecules/Form";
 
@@ -48,13 +48,13 @@ const SignIn = () => {
   return (
     <StyledDiv onSubmit={onSubmit}>
       {loading ? (
-        <LoadingSpan />
+        <SpanLoading />
       ) : (
         <>
           <Box>
             <Logo />
             <Form {...FormProps} />
-            {error ? <ErrorSpan>{error}</ErrorSpan> : null}
+            {error ? <SpanError>{error}</SpanError> : null}
           </Box>
           <Box>
             <StyledSpan>
