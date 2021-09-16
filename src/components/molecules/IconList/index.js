@@ -21,6 +21,7 @@ const StyledUl = styled.ul`
 const IconList = () => {
   const dispatch = useDispatch();
   const { username } = useSelector((state) => state.session);
+  const { username: selectedUser } = useSelector((state) => state.posts);
 
   const onClick = () => {
     dispatch(getPosts(username));

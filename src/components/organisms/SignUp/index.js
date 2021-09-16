@@ -4,30 +4,18 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { removeError, signUp } from "../../../modules/session";
 import Box from "../../atoms/Box";
+import ErrorSpan from "../../atoms/ErrorSpan";
+import LoadingSpan from "../../atoms/LoadingSpan";
 import Logo from "../../atoms/Logo";
 import Form from "../../molecules/Form";
-import SignUpForm from "../../molecules/SignUpForm";
 
-const StyledSignUp = styled.div`
+const StyledDiv = styled.div`
   width: ${({ theme }) => theme.widths.loginBox};
 `;
 
 const StyledSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.m};
   margin: 10px 0;
-`;
-
-const ErrorSpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSizes.m};
-  color: ${({ theme }) => theme.colors.red};
-  margin: 10px 0;
-`;
-
-const LoadingSpan = styled.span`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: ${({ theme }) => theme.fontSizes.xl};
 `;
 
 const SignUp = () => {
@@ -62,9 +50,9 @@ const SignUp = () => {
   };
 
   return (
-    <StyledSignUp onSubmit={onSubmit}>
+    <StyledDiv onSubmit={onSubmit}>
       {loading ? (
-        <LoadingSpan>Loading...</LoadingSpan>
+        <LoadingSpan />
       ) : (
         <>
           <Box>
@@ -82,17 +70,8 @@ const SignUp = () => {
           </Box>
         </>
       )}
-    </StyledSignUp>
+    </StyledDiv>
   );
 };
 
-/*
- <StyledSignUp onSubmit={onSubmit}>
-      <LoginUpperBox
-        inputList={["이메일 주소", "성명", "사용자 이름", "비밀번호"]}
-        btnText="가입"
-        onSubmit={onSubmit}
-      />
-      <LoginLowerBox firstText="계정이 있으신가요?" secondText="로그인" link="/" />
-*/
 export default SignUp;

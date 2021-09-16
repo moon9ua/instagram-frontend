@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StyledIcon = styled.div`
   padding: 0 5px;
+  font-size: 15px;
 `;
 
 const Icon = ({ icon, name }) => {

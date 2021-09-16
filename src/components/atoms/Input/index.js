@@ -1,32 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-/* return `
-width: ${chosenTheme.width};
-background-color: ${chosenTheme["background-color"]};
-padding: ${chosenTheme.padding};
-border: 1px solid ${chosenTheme["border-color"]};
-`; */
-
 const StyledInput = styled.input`
-  ${({ theme, themeName }) => {
-    const chosenTheme = theme[themeName];
-    return Object.entries(chosenTheme)
-      .map((val) => {
-        const [key, value] = val;
-        return `${key}: ${value};`;
-      })
-      .join("");
-  }};
-
+  width: 270px;
+  padding: 10px;
+  margin: 3px 0;
   background-color: ${({ theme }) => theme.colors.backgroundGray};
   border: 1px solid ${({ theme }) => theme.colors.borderGray};
-
   border-radius: 3px;
   box-sizing: border-box;
 `;
 
-const Input = ({ placeholder, name, themeName = "inputForHome" }) => {
+const Input = ({ className, placeholder, name }) => {
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
@@ -35,11 +20,11 @@ const Input = ({ placeholder, name, themeName = "inputForHome" }) => {
 
   return (
     <StyledInput
+      className={className}
       placeholder={placeholder}
       name={name}
       value={value}
       onChange={onChange}
-      themeName={themeName}
     ></StyledInput>
   );
 };

@@ -8,9 +8,8 @@ import ErrorSpan from "../../atoms/ErrorSpan";
 import LoadingSpan from "../../atoms/LoadingSpan";
 import Logo from "../../atoms/Logo";
 import Form from "../../molecules/Form";
-import SignInForm from "../../molecules/SignInForm";
 
-const StyledSignIn = styled.div`
+const StyledDiv = styled.div`
   width: ${({ theme }) => theme.widths.loginBox};
 `;
 
@@ -47,7 +46,7 @@ const SignIn = () => {
   };
 
   return (
-    <StyledSignIn onSubmit={onSubmit}>
+    <StyledDiv onSubmit={onSubmit}>
       {loading ? (
         <LoadingSpan />
       ) : (
@@ -67,7 +66,7 @@ const SignIn = () => {
           </Box>
         </>
       )}
-    </StyledSignIn>
+    </StyledDiv>
   );
 };
 

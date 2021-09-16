@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: #fafafa;
+    font-size: 15px;
   }
 
   *:visited {
@@ -13,8 +14,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    color: black;
     text-decoration: none;
   }
+
 `;
 
 export default GlobalStyle;

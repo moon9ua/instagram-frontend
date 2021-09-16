@@ -10,7 +10,11 @@ const Home = () => {
   const session = useSelector((state) => state.session);
 
   return session.isLogined ? (
-    <NavAndFooter nav={<NavBar />} context={<span>로그인 됐다!</span>} footer={<Footer />} />
+    <NavAndFooter
+      nav={<NavBar />}
+      context={<span>팔로우 한 사람들 posts...?</span>}
+      footer={<Footer />}
+    />
   ) : (
     <HomeTemplate context={<SignIn />} footer={<Footer />} />
   );

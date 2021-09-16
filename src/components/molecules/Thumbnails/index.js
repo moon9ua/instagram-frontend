@@ -3,27 +3,22 @@ import styled from "styled-components";
 import Thumbnail from "../../atoms/Thumbnail";
 
 const StyledDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(100px, auto));
+  gap: 20px;
 
-const StyledThumbnail = styled(Thumbnail)`
-  position: relative;
-  margin: 1rem;
-  width: 150px;
-  height: 150px;
+  /* display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; */
 `;
 
 const Thumbnails = ({ posts }) => {
   return (
     <StyledDiv>
       {posts.map((val) => {
-        return <StyledThumbnail key={val.id} src={val.images[0].url} />;
+        return <Thumbnail key={val.id} src={val.images[0].url} />;
       })}
-      {/* <Thumbnail src="https://pbs.twimg.com/media/Ek6vZPYUcAA2qPv.png" />
-      <Thumbnail src="https://pbs.twimg.com/media/Ek6vZPYUcAA2qPv.png" />
-      <Thumbnail src="https://pbs.twimg.com/media/Ek6vZPYUcAA2qPv.png" />
-      <Thumbnail src="https://pbs.twimg.com/media/Ek6vZPYUcAA2qPv.png" /> */}
     </StyledDiv>
   );
 };

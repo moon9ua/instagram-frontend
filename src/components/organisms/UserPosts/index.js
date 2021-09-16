@@ -8,7 +8,9 @@ import { getPosts } from "../../../modules/posts";
 
 const StyledDiv = styled.div`
   max-width: 1000px;
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const UserPosts = (username) => {

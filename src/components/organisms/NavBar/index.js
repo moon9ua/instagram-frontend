@@ -5,7 +5,7 @@ import Input from "../../atoms/Input";
 import Logo from "../../atoms/Logo";
 import IconList from "../../molecules/IconList";
 
-const StyledNavBar = styled.nav`
+const StyledNav = styled.nav`
   width: 100%;
   max-width: 80%;
   display: flex;
@@ -13,7 +13,7 @@ const StyledNavBar = styled.nav`
   align-items: center;
 `;
 
-const StyledNavBarContainer = styled.div`
+const StyledDiv = styled.div`
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderGray};
   display: flex;
@@ -22,17 +22,23 @@ const StyledNavBarContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
+const StyledInput = styled(Input)`
+  width: 200px;
+  padding: 5px 0;
+  margin: 0 10px;
+`;
+
 const NavBar = () => {
   return (
-    <StyledNavBarContainer>
-      <StyledNavBar>
+    <StyledDiv>
+      <StyledNav>
         <Link to="/">
           <Logo size="navTitle" />
         </Link>
-        <Input themeName="inputForSearch" />
+        <StyledInput />
         <IconList />
-      </StyledNavBar>
-    </StyledNavBarContainer>
+      </StyledNav>
+    </StyledDiv>
   );
 };
 

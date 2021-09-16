@@ -5,9 +5,9 @@ const StyledDiv = styled.div``;
 
 const UserProfile = () => {
   return (
-    <StyledDiv>
-      <span>유저라고! 으하하</span>
-    </StyledDiv>
+    // <StyledDiv>
+    <span>유저라고! 으하하</span>
+    // </StyledDiv>
   );
 };
 
