@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import UserProfile from "../../molecules/UserProfile";
 import Thumbnails from "../../molecules/Thumbnails";
-import { useDispatch, useSelector } from "react-redux";
-import LoadingSpan from "../../atoms/LoadingSpan";
-import { getPosts } from "../../../modules/posts";
+import { useSelector } from "react-redux";
+import SpanLoading from "../../atoms/SpanLoading";
 
 const StyledDiv = styled.div`
-  max-width: 1000px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: auto;
+  padding: 15px;
 `;
 
 const UserPosts = (username) => {
@@ -19,11 +20,9 @@ const UserPosts = (username) => {
   return (
     <StyledDiv>
       <UserProfile />
-      {loading ? <LoadingSpan /> : <Thumbnails posts={posts} />}
+      {loading ? <SpanLoading /> : <Thumbnails posts={posts} />}
     </StyledDiv>
   );
 };
-
-// <img src="https://pbs.twimg.com/media/Ek6vZPYUcAA2qPv.png" />;
 
 export default UserPosts;

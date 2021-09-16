@@ -1,21 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledNavAndFooter = styled.div`
-  height: 100vh;
+const StyledDiv = styled.div`
+  width: 100%;
+  /* width: 100vw; */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  /* background-color: yellow; */
+
+  .context {
+    width: 100%;
+    /* background-color: yellow; */
+  }
 `;
 
 const NavAndFooter = ({ nav, context, footer }) => {
   return (
-    <StyledNavAndFooter>
+    <StyledDiv>
       {nav}
-      {context}
+      <div className="context">{context}</div>
       {footer}
-    </StyledNavAndFooter>
+    </StyledDiv>
   );
 };
 

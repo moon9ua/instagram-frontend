@@ -3,14 +3,11 @@ import styled from "styled-components";
 import Thumbnail from "../../atoms/Thumbnail";
 
 const StyledDiv = styled.div`
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, minmax(100px, auto));
+  grid-template-columns: repeat(3, minmax(100px, 1fr));
   gap: 20px;
-
-  /* display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center; */
+  /* background-color: yellow; */
 `;
 
 const Thumbnails = ({ posts }) => {

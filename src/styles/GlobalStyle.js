@@ -1,12 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  html, body {
-    height: 100%;
+  body {
     margin: 0;
     padding: 0;
     background-color: #fafafa;
-    font-size: 15px;
+    font-size: 16px;
+    overflow-y: scroll;
   }
 
   *:visited {
@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: black;
     text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 
 `;

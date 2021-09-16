@@ -5,7 +5,7 @@ const fontSizes = {
   m: px(14),
   l: px(20),
   xl: px(30),
-  navTitle: px(20),
+  navTitle: px(25),
   title: px(35),
 };
 
@@ -25,20 +25,7 @@ const fonts = {
 
 const widths = {
   loginBox: px(350),
-};
-
-const inputForHome = {
-  width: px(270),
-  "background-color": colors.backgroundGray,
-  padding: px(10),
-  border: `1px solid ${colors.borderGray}`,
-  margin: "3px 0",
-};
-
-const inputForSearch = {
-  width: px(200),
-  padding: "5px 0",
-  margin: "0px 10px",
+  maxWidth: px(1000),
 };
 
 const theme = {
@@ -46,8 +33,6 @@ const theme = {
   colors,
   fonts,
   widths,
-  inputForHome,
-  inputForSearch,
 };
 
 export default theme;

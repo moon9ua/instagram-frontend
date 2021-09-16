@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StyledIcon = styled.div`
-  padding: 0 5px;
-  font-size: 15px;
+  margin: 0 15px 0 0;
+  font-size: 20px;
 `;
 
 const Icon = ({ icon, name }) => {
