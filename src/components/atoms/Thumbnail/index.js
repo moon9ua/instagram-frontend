@@ -7,13 +7,23 @@ const StyledDiv = styled.div`
     width: 100%;
     height: 100%;
   } */
+
+  overflow: hidden;
+  display: flex;
+  /* width: 300px; */
+  width: 100%;
+  aspect-ratio: 1;
+  /* height: 300px; */
+  flex-flow: row wrap;
+  justify-content: center;
+  /* justify-content: flex-start; */
+  align-items: center;
 `;
 
 const StyledImg = styled.img`
-  width: 100%;
-  aspect-ratio: 1;
-  /* height: 100%; */
-  object-fit: cover;
+  /* width: 100%; */
+  /* aspect-ratio: 1; */
+  /* object-fit: cover; */
 `;
 
 const Thumbnail = ({ className, id, src }) => {
