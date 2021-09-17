@@ -33,7 +33,7 @@ const Icons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px;
+  margin: 10px 0 10px 10px;
 `;
 
 const ThreeIcons = styled.div`
@@ -50,7 +50,9 @@ const Comments = styled.ul`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderGray};
 `;
 
-const Comment = styled.li``;
+const Comment = styled.li`
+  margin: 0 0 5px;
+`;
 
 const UserName = styled.strong`
   margin: 0 5px 0 0;
