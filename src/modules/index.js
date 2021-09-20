@@ -4,7 +4,7 @@ import posts from "./posts";
 
 const rootReducer = combineReducers({
   session,
-  posts,
+  // posts,
 });
 
 export default rootReducer;

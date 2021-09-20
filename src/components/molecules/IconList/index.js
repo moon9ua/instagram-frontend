@@ -20,8 +20,10 @@ const StyledUl = styled.ul`
 
 const IconList = () => {
   const dispatch = useDispatch();
-  const { username } = useSelector((state) => state.session);
-  const { username: selectedUser } = useSelector((state) => state.posts);
+  const {
+    user: { username },
+  } = useSelector((state) => state.session);
+  // const { username: selectedUser } = useSelector((state) => state.posts);
 
   const onClick = () => {
     dispatch(getPosts(username));
@@ -32,7 +34,9 @@ const IconList = () => {
       <Link to="/">
         <Icon icon={faHome} name="home" />
       </Link>
-      <Icon icon={faPaperPlane} name="dm" />
+      <Link to="/itsTest!">
+        <Icon icon={faPaperPlane} name="dm" />
+      </Link>
       <Icon icon={faCompass} name="explore" />
       <Icon icon={faHeart} name="feed" />
       <Link to={`/${username}`} onClick={onClick}>

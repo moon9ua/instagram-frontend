@@ -11,7 +11,7 @@ export const getUserAPI = async (username) => {
   }
 
   const json = await response.json();
-  console.log(json);
+  console.log("getUserAPI:", json);
   return json; // email, image, name, text, username // ⬜️ 확인 및 사용 X
 };
 

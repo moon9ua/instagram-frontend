@@ -11,6 +11,8 @@ const StyledDiv = styled.div`
 `;
 
 const Thumbnails = ({ posts, onClick }) => {
+  // console.log(posts);
+
   return (
     <StyledDiv>
       {posts.map((val) => {
