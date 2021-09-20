@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import UserProfile from "../../molecules/UserProfile";
 import Thumbnails from "../../molecules/Thumbnails";
-import { useSelector } from "react-redux";
 import SpanLoading from "../../atoms/SpanLoading";
-import PostModal from "../PostModal";
+// import PostModal from "../PostModal";
 import { getPostsAPI } from "../../../utils/API";
+import { useDispatch, useSelector } from "react-redux";
+import { endLoading, startLoading } from "../../../modules/loading";
 
 const StyledDiv = styled.div`
   width: 1000px;
@@ -20,41 +21,25 @@ const UserPosts = ({ username }) => {
   // const { loading, posts } = useSelector((state) => state.posts);
   // console.log("haha"); // 왜 2,3번씩 출력?
 
-  const [state, setState] = useState({
-    // username: "",
-    posts: [],
-    loading: false,
-    error: "",
-  });
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading);
+  const [error, setError] = useState("");
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const doGetPostsAPI = async (username) => {
-      setState((state) => ({
-        ...state,
-        loading: true,
-        error: "",
-      }));
+      dispatch(startLoading());
       try {
         const posts = await getPostsAPI(username);
-        setState((state) => ({
-          ...state,
-          posts,
-          loading: false,
-          error: "",
-        }));
+        setPosts([...posts]);
+        dispatch(endLoading());
       } catch (e) {
-        setState((state) => ({
-          ...state,
-          loading: false,
-          error: e.message,
-        }));
+        setError(e.message);
       }
     };
 
     doGetPostsAPI(username);
-  }, [username]);
-
-  const { loading, posts, error } = state; // 이렇게?
+  }, [dispatch, username]);
 
   const [modalOpen, setModalOpen] = useState(false);
 

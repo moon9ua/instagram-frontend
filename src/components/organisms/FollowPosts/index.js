@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Post from "../../molecules/Post";
 
@@ -9,6 +9,11 @@ const Container = styled.div`
 `;
 
 const FollowPosts = () => {
+  const [state, setState] = useState({
+    posts: [],
+    loading: [],
+  });
+
   return (
     <Container>
       <Post />
