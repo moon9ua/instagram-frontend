@@ -1,4 +1,4 @@
-import { getPostsAPI } from "../utils/api";
+import { getPostsAPI } from "../utils/API";
 
 // action 타입
 const GET_POSTS = "post/GET_POSTS";

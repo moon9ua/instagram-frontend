@@ -2,35 +2,33 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  /* div {
-    background-color: gray;
-    width: 100%;
-    height: 100%;
-  } */
-
-  overflow: hidden;
-  display: flex;
-  /* width: 300px; */
-  width: 100%;
   aspect-ratio: 1;
-  /* height: 300px; */
+  overflow: hidden;
+
+  /*
+  aspect-ratio: 1;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
+  object-fit: cover;
+  display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  /* justify-content: flex-start; */
   align-items: center;
+  */
 `;
 
 const StyledImg = styled.img`
-  /* width: 100%; */
-  /* aspect-ratio: 1; */
-  /* object-fit: cover; */
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
 `;
 
-const Thumbnail = ({ className, id, src }) => {
+const Thumbnail = ({ className, id, src, onClick }) => {
   return (
     <StyledDiv>
       {/* <div></div> */}
-      <StyledImg className={className} id={id} src={src} alt="" />
+      <StyledImg className={className} id={id} src={src} alt="" onClick={onClick} />
     </StyledDiv>
   );
 };

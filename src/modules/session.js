@@ -1,4 +1,4 @@
-import { loginAPI, registerAPI } from "../utils/api";
+import { getUserAPI, loginAPI, registerAPI } from "../utils/API";
 
 // action 타입
 const SIGNIN = "session/SIGNIN";
@@ -11,37 +11,44 @@ const SIGNUP_ERROR = "session/SIGNUP_ERROR";
 
 const REMOVE_ERROR = "session/REMOVE_ERROR";
 
-// action 생성 함수, action 생성 함수 + thunk 함수
+// action 생성 함수, thunk 함수
 export const signIn = (signInForm) => async (dispatch) => {
   dispatch({ type: SIGNIN });
   try {
-    const token = await loginAPI(signInForm); // token말고 아마 email이랑 name도 이때 받아올듯. 같이 넣어줘야.
-    dispatch({ type: SIGNIN_SUCCESS, signInForm, token });
+    const token = await loginAPI(signInForm);
+    const userInfo = await getUserAPI(signInForm.username);
+    dispatch({ type: SIGNIN_SUCCESS, userInfo, token });
   } catch (e) {
     dispatch({ type: SIGNIN_ERROR, error: e.message });
   }
 };
+
 export const signUp = (signUpForm) => async (dispatch) => {
   dispatch({ type: SIGNUP });
   try {
     await registerAPI(signUpForm);
-    dispatch({ type: SIGNUP_SUCCESS, signUpForm });
+    dispatch({ type: SIGNUP_SUCCESS });
   } catch (e) {
     dispatch({ type: SIGNUP_ERROR, error: e.message });
   }
 };
+
 export const removeError = () => {
   return { type: REMOVE_ERROR };
 };
 
 const initialState = {
-  username: "",
-  name: "",
-  password: "",
-  email: "",
+  user: {
+    username: "",
+    name: "",
+    email: "",
+    text: "",
+    image: "",
+  },
+  // password: "",
+  isLogined: false,
   token: "",
   loading: false,
-  isLogined: false,
   error: null,
 };
 
@@ -57,11 +64,11 @@ export default function session(state = initialState, action) {
     case SIGNIN_SUCCESS:
       return {
         ...state,
-        ...action.signInForm,
+        user: { ...action.userInfo },
         token: action.token,
         loading: false,
         isLogined: true,
-        error: null, // 이렇게 하나씩 다 해줘야하나?
+        error: null,
       };
     case SIGNIN_ERROR:
       return {

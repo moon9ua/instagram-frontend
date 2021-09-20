@@ -50,7 +50,7 @@ const SignUp = () => {
       username: "사용자 이름",
       password: "비밀번호",
     },
-    btnName: "로그인",
+    btnName: "가입",
   };
 
   return (
