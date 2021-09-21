@@ -1,13 +1,14 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 import styled from "styled-components";
-import { removeError, signUp } from "../../../modules/session";
 import Box from "../../atoms/Box";
 import SpanError from "../../atoms/SpanError";
 import SpanLoading from "../../atoms/SpanLoading";
 import Logo from "../../atoms/Logo";
 import Form from "../../molecules/Form";
+import Span from "../../atoms/Span";
 
 const StyledDiv = styled.div`
   width: ${({ theme }) => theme.widths.loginBox};
@@ -18,62 +19,31 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
-const LinkSpan = styled.span`
-  color: ${({ theme }) => theme.colors.blue};
-`;
-
 const SignUp = () => {
-  const dispatch = useDispatch();
+  const {
+    state: { onSubmit, onClickLink, FormProps },
+  } = useLocation();
   const { loading, error } = useSelector((state) => state.session);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    dispatch(
-      signUp({
-        email: e.target.email.value,
-        name: e.target.name.value,
-        username: e.target.username.value,
-        password: e.target.password.value,
-      })
-    );
-  };
-
-  const onClickLink = () => {
-    dispatch(removeError());
-  };
-
-  const FormProps = {
-    inputInfo: {
-      email: "이메일 주소",
-      name: "성명",
-      username: "사용자 이름",
-      password: "비밀번호",
-    },
-    btnName: "가입",
-  };
-
-  return (
+  return loading ? (
+    <SpanLoading />
+  ) : (
     <StyledDiv onSubmit={onSubmit}>
-      {loading ? (
-        <SpanLoading />
-      ) : (
-        <>
-          <Box>
-            <Logo />
-            <Form {...FormProps} />
-            {error ? <SpanError>{error}</SpanError> : null}
-          </Box>
-          <Box>
-            <StyledSpan>
-              계정이 있으신가요?{" "}
-              <Link to="/" onClick={onClickLink}>
-                <LinkSpan>로그인</LinkSpan>
-              </Link>
-            </StyledSpan>
-          </Box>
-        </>
-      )}
+      <Box>
+        <Logo />
+        <Form {...FormProps} />
+        {error ? <SpanError>{error}</SpanError> : null}
+      </Box>
+      <Box>
+        <StyledSpan>
+          계정이 있으신가요?{" "}
+          <Link to="/" onClick={onClickLink}>
+            <Span fontSize="14px" color="blue">
+              로그인
+            </Span>
+          </Link>
+        </StyledSpan>
+      </Box>
     </StyledDiv>
   );
 };

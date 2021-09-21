@@ -7,13 +7,17 @@ const StyledSpan = styled.span`
   /* 되나? */
 `;
 
-function Span({ children, ...rest }) {
-  return <StyledSpan {...rest}>{children}</StyledSpan>;
+function Span({ className, children, fontSize, color }) {
+  return (
+    <StyledSpan className={className} fontSize={fontSize} color={color}>
+      {children}
+    </StyledSpan>
+  );
 }
 
 StyledSpan.defaultProps = {
-  "font-size": "12px", // 필요한가?
-  color: "#999999",
+  fontSize: "12px",
+  color: "textGray",
 };
 
 export default Span;
