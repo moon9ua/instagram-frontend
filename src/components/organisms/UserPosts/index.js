@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
   padding: 0 20px;
 `;
 
-const UserPosts = ({ error, setError, posts, setPosts }) => {
+const UserPosts = ({ error, posts }) => {
   const loading = useSelector((state) => state.loading);
 
   // const [modalOpen, setModalOpen] = useState(false);
@@ -31,18 +31,14 @@ const UserPosts = ({ error, setError, posts, setPosts }) => {
   //   setModalOpen(false);
   // };
 
-  return (
+  return loading ? (
+    <SpanLoading />
+  ) : (
     <StyledDiv>
-      {loading ? (
-        <SpanLoading />
-      ) : (
-        <>
-          <UserProfile />
-          {/* {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />} */}
-          {error ? <span>{error}</span> : <Thumbnails posts={posts} />}
-          {/* <PostModal isOpen={modalOpen} close={closeModal} /> */}
-        </>
-      )}
+      <UserProfile />
+      {/* {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />} */}
+      {error ? <span>{error}</span> : <Thumbnails posts={posts} />}
+      {/* <PostModal isOpen={modalOpen} close={closeModal} /> */}
     </StyledDiv>
   );
 };
