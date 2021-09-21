@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeError, signIn, signUp } from "../../../modules/session";
+import { removeError, signIn } from "../../../modules/session";
 import Footer from "../../organisms/Footer";
 import SignIn from "../../organisms/SignIn";
 import HomeTemplate from "../../templates/HomeTemplate";
@@ -32,37 +32,7 @@ const NotLoginedHome = () => {
     },
   };
 
-  const signUpProps = {
-    onSubmit: (e) => {
-      e.preventDefault();
-      dispatch(
-        signUp({
-          email: e.target.email.value,
-          name: e.target.name.value,
-          username: e.target.username.value,
-          password: e.target.password.value,
-        })
-      );
-    },
-
-    onClickLink: () => {
-      dispatch(removeError());
-    },
-
-    FormProps: {
-      inputInfo: {
-        email: "이메일 주소",
-        name: "성명",
-        username: "사용자 이름",
-        password: "비밀번호",
-      },
-      btnName: "가입",
-    },
-  };
-
-  return (
-    <HomeTemplate context={<SignIn {...{ signInProps, signUpProps }} />} footer={<Footer />} />
-  );
+  return <HomeTemplate context={<SignIn {...signInProps} />} footer={<Footer />} />;
 };
 
 export default NotLoginedHome;

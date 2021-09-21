@@ -8,6 +8,7 @@ import { getPostsAPI } from "../../../utils/API";
 import { useDispatch, useSelector } from "react-redux";
 import { endLoading, startLoading } from "../../../modules/loading";
 import PostModal from "../PostModal";
+import { useLocation } from "react-router";
 
 const StyledDiv = styled.div`
   width: 1000px;
@@ -20,40 +21,19 @@ const StyledDiv = styled.div`
   padding: 0 20px;
 `;
 
-const UserPosts = ({ username }) => {
-  const dispatch = useDispatch();
+const UserPosts = ({ error, setError, posts, setPosts }) => {
   const loading = useSelector((state) => state.loading);
-  const [error, setError] = useState("");
-  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const doGetPostsAPI = async (username) => {
-      dispatch(startLoading());
-      setError("");
-      try {
-        const posts = await getPostsAPI(username);
-        dispatch(endLoading());
-        setError("");
-        setPosts([...posts]);
-      } catch (e) {
-        dispatch(endLoading());
-        setError(e.message);
-      }
-    };
+  // const [modalOpen, setModalOpen] = useState(false);
 
-    doGetPostsAPI(username);
-  }, [username, dispatch]);
+  // const openModal = (e) => {
+  //   console.log(e.target.id);
+  //   setModalOpen(true); // 그냥 반대로 해줘야 하나?
+  // };
 
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = (e) => {
-    console.log(e.target.id);
-    setModalOpen(true); // 그냥 반대로 해줘야 하나?
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  // const closeModal = () => {
+  //   setModalOpen(false);
+  // };
 
   return (
     <StyledDiv>
@@ -62,8 +42,9 @@ const UserPosts = ({ username }) => {
       ) : (
         <>
           <UserProfile />
-          {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />}
-          <PostModal isOpen={modalOpen} close={closeModal} />
+          {/* {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />} */}
+          {error ? <span>{error}</span> : <Thumbnails posts={posts} />}
+          {/* <PostModal isOpen={modalOpen} close={closeModal} /> */}
         </>
       )}
     </StyledDiv>

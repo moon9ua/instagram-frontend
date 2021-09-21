@@ -1,9 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
 import styled from "styled-components";
-import { removeError, signIn } from "../../../modules/session";
 import Box from "../../atoms/Box";
 import SpanError from "../../atoms/SpanError";
 import SpanLoading from "../../atoms/SpanLoading";
@@ -20,8 +18,7 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
-const SignIn = ({ signInProps, signUpProps }) => {
-  const { onSubmit, onClickLink, FormProps } = signInProps;
+const SignIn = ({ onSubmit, onClickLink, FormProps }) => {
   const { loading, error } = useSelector((state) => state.session);
 
   return loading ? (
@@ -37,7 +34,8 @@ const SignIn = ({ signInProps, signUpProps }) => {
         <StyledSpan>
           계정이 없으신가요?{" "}
           <Link
-            to={{ pathname: "/accounts/signup", state: { ...signUpProps } }}
+            // to={{ pathname: "/accounts/signup", state: { ...signUpProps } }}
+            to="/accounts/signup"
             onClick={onClickLink}
           >
             <Span fontSize="14px" color="blue">

@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router";
 import styled from "styled-components";
 import Box from "../../atoms/Box";
 import SpanError from "../../atoms/SpanError";
@@ -19,10 +18,7 @@ const StyledSpan = styled.span`
   margin: 10px 0;
 `;
 
-const SignUp = () => {
-  const {
-    state: { onSubmit, onClickLink, FormProps },
-  } = useLocation();
+const SignUp = ({ onSubmit, onClickLink, FormProps }) => {
   const { loading, error } = useSelector((state) => state.session);
 
   return loading ? (
