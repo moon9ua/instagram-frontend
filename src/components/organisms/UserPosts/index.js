@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import UserProfile from "../UserProfile";
 import Thumbnails from "../../molecules/Thumbnails";
 import SpanLoading from "../../atoms/SpanLoading";
 // import PostModal from "../PostModal";
-import { getPostsAPI } from "../../../utils/API";
-import { useDispatch, useSelector } from "react-redux";
-import { endLoading, startLoading } from "../../../modules/loading";
-import PostModal from "../PostModal";
-import { useLocation } from "react-router";
+import { useSelector } from "react-redux";
 
 const StyledDiv = styled.div`
   width: 1000px;

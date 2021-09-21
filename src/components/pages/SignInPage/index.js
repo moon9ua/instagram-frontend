@@ -5,7 +5,7 @@ import Footer from "../../organisms/Footer";
 import SignIn from "../../organisms/SignIn";
 import HomeTemplate from "../../templates/HomeTemplate";
 
-const NotLoginedHome = () => {
+const SignInPage = () => {
   const dispatch = useDispatch();
 
   const signInProps = {
@@ -35,4 +35,4 @@ const NotLoginedHome = () => {
   return <HomeTemplate context={<SignIn {...signInProps} />} footer={<Footer />} />;
 };
 
-export default NotLoginedHome;
+export default SignInPage;
