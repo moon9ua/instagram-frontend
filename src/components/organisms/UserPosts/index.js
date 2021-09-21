@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import UserProfile from "../../molecules/UserProfile";
+import UserProfile from "../UserProfile";
 import Thumbnails from "../../molecules/Thumbnails";
 import SpanLoading from "../../atoms/SpanLoading";
 // import PostModal from "../PostModal";
 import { getPostsAPI } from "../../../utils/API";
 import { useDispatch, useSelector } from "react-redux";
 import { endLoading, startLoading } from "../../../modules/loading";
+import PostModal from "../PostModal";
 
 const StyledDiv = styled.div`
   width: 1000px;
+  /* min-height: 100vh; */
+  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,9 +21,6 @@ const StyledDiv = styled.div`
 `;
 
 const UserPosts = ({ username }) => {
-  // const { loading, posts } = useSelector((state) => state.posts);
-  // console.log("haha"); // 왜 2,3번씩 출력?
-
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
   const [error, setError] = useState("");
@@ -29,17 +29,20 @@ const UserPosts = ({ username }) => {
   useEffect(() => {
     const doGetPostsAPI = async (username) => {
       dispatch(startLoading());
+      setError("");
       try {
         const posts = await getPostsAPI(username);
-        setPosts([...posts]);
         dispatch(endLoading());
+        setError("");
+        setPosts([...posts]);
       } catch (e) {
+        dispatch(endLoading());
         setError(e.message);
       }
     };
 
     doGetPostsAPI(username);
-  }, [dispatch, username]);
+  }, [username, dispatch]);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -60,7 +63,7 @@ const UserPosts = ({ username }) => {
         <>
           <UserProfile />
           {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />}
-          {/* <PostModal isOpen={modalOpen} close={closeModal} /> */}
+          <PostModal isOpen={modalOpen} close={closeModal} />
         </>
       )}
     </StyledDiv>

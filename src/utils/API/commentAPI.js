@@ -1,6 +1,6 @@
 const ENDPOINT = "/api";
 
-const COMMENTS = "/commnets";
+const COMMENTS = "/comments";
 const POSTS = "/posts";
 
 export const createCommentAPI = async (commentInfo) => {

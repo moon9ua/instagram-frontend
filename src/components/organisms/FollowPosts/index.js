@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Post from "../../molecules/Post";
+import Post from "../Post";
 
 const Container = styled.div`
   display: flex;
@@ -9,10 +9,10 @@ const Container = styled.div`
 `;
 
 const FollowPosts = () => {
-  const [state, setState] = useState({
-    posts: [],
-    loading: [],
-  });
+  // const [state, setState] = useState({
+  //   posts: [],
+  //   loading: [],
+  // });
 
   return (
     <Container>

@@ -16,3 +16,10 @@ export { getUserAPI, deleteUserAPI, patchUserAPI, registerAPI };
 export { createPostAPI, deletePostAPI, getPostsAPI };
 export { followAPI, unfollowAPI, getFollowersAPI, getFollowingsAPI };
 export { createCommentAPI, deleteCommentAPI, getCommentOfCommentAPI, getCommentOfPostAPI };
+
+export const test = async () => {
+  try {
+  } catch (e) {
+    console.error(e);
+  }
+};
