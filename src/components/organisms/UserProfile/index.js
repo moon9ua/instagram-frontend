@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import RoundImg from "../../atoms/RoundImg";
 import ProfileContext from "./ProfileContext";
@@ -21,14 +22,19 @@ const InfoContainer = styled.div`
   margin: 0 0 0 50px;
 `;
 
-const UserProfile = () => {
-  return (
+const UserProfile = ({ error, info, onEdit, onFollow }) => {
+  const { image, name, text, username } = info;
+
+  return error ? (
+    error
+  ) : (
     <StyledDiv>
-      <RoundImg src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg" />
+      {/* <RoundImg src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg" /> */}
+      <RoundImg src={image} />
       <InfoContainer>
-        <ProfileTitle />
+        <ProfileTitle {...{ username, onEdit, onFollow }} />
         <ProfileInfo />
-        <ProfileContext name="이름" context="유저 소개 내용입니다... 하하 ^^7" />
+        <ProfileContext name={name} context={text} />
       </InfoContainer>
     </StyledDiv>
   );
