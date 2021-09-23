@@ -1,4 +1,4 @@
-import { getUserAPI, loginAPI, registerAPI, test } from "../utils/API";
+import { getUserAPI, loginAPI, patchUserAPI, registerAPI, test } from "../utils/API";
 
 // action 타입
 const SIGNIN = "session/SIGNIN";
@@ -10,6 +10,10 @@ const SIGNUP_SUCCESS = "session/SIGNUP_SUCCESS";
 const SIGNUP_ERROR = "session/SIGNUP_ERROR";
 
 const REMOVE_ERROR = "session/REMOVE_ERROR";
+
+const EDIT = "session/EDIT";
+const EDIT_SUCCESS = "session/EDIT_SUCCESS";
+const EDIT_ERROR = "session/EDIT_ERROR";
 
 // action 생성 함수, thunk 함수
 export const signIn = (signInForm) => async (dispatch) => {
@@ -35,6 +39,19 @@ export const signUp = (signUpForm) => async (dispatch) => {
 
 export const removeError = () => {
   return { type: REMOVE_ERROR };
+};
+
+export const edit = (username, editForm) => async (dispatch) => {
+  console.log("start");
+  dispatch({ type: EDIT });
+  try {
+    await patchUserAPI(username, editForm);
+    dispatch({ type: EDIT_SUCCESS, editForm });
+    console.log("success");
+  } catch (e) {
+    dispatch({ type: EDIT_ERROR, error: e.message });
+    console.log("fail");
+  }
 };
 
 const initialState = {
@@ -100,6 +117,25 @@ export default function session(state = initialState, action) {
       return {
         ...state,
         error: null,
+      };
+    case EDIT:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case EDIT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        user: { ...action.editForm },
+      };
+    case EDIT_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
       };
     default:
       return state;

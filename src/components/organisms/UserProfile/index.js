@@ -22,7 +22,7 @@ const InfoContainer = styled.div`
   margin: 0 0 0 50px;
 `;
 
-const UserProfile = ({ error, info, onEdit, onFollow }) => {
+const UserProfile = ({ error, info, setEditOpen, onClickFollowBtn }) => {
   const { image, name, text, username } = info;
 
   return error ? (
@@ -32,7 +32,7 @@ const UserProfile = ({ error, info, onEdit, onFollow }) => {
       {/* <RoundImg src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg" /> */}
       <RoundImg src={image} />
       <InfoContainer>
-        <ProfileTitle {...{ username, onEdit, onFollow }} />
+        <ProfileTitle {...{ username, setEditOpen, onClickFollowBtn }} />
         <ProfileInfo />
         <ProfileContext name={name} context={text} />
       </InfoContainer>

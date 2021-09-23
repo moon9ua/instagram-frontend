@@ -9,6 +9,7 @@ const useUserPosts = (targetName) => {
 
   const [error, setError] = useState("");
   const [posts, setPosts] = useState([]);
+  const [editOpen, setEditOpen] = useState(false);
 
   useEffect(() => {
     const doGetPostsAPI = async (targetName) => {
@@ -28,7 +29,7 @@ const useUserPosts = (targetName) => {
     if (targetName) doGetPostsAPI(targetName);
   }, [targetName, dispatch]);
 
-  return [error, posts];
+  return [error, posts, editOpen, setEditOpen];
 };
 
 export default useUserPosts;
