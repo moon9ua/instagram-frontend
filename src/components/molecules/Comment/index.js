@@ -14,7 +14,9 @@ const Comment = ({ username, context }) => {
   return (
     <StyledLi>
       <UserName>{username}</UserName>
-      <Span>{context}</Span>
+      <Span fontSize="14px" color="black">
+        {context}
+      </Span>
     </StyledLi>
   );
 };

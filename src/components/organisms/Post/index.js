@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import WhiteInput from "../../molecules/WhiteForm";
-import PostComments from "./PostComments";
-import PostHeader from "./PostHeader";
-import PostIcons from "./PostIcons";
+import PostComments from "../../molecules/PostComments";
+import PostHeader from "../../molecules/PostHeader";
+import PostIcons from "../../molecules/PostIcons";
+import Comment from "../../molecules/Comment";
 
 const StyledDiv = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderGray};
@@ -30,7 +31,11 @@ const Post = () => {
         alt=""
       />
       <PostIcons />
-      <PostComments />
+      <PostComments>
+        <Comment username="seo" context="wow" />
+        <Comment username="kim" context="대박!!" />
+      </PostComments>
+
       <WhiteInput />
     </StyledDiv>
   );

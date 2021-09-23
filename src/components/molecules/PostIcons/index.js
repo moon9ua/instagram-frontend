@@ -14,9 +14,9 @@ const ThreeIcons = styled.div`
   display: flex;
 `;
 
-const PostIcons = () => {
+const PostIcons = ({ className }) => {
   return (
-    <Icons>
+    <Icons className={className}>
       <ThreeIcons>
         <Icon icon={faHeart} />
         <Icon icon={faComment} />

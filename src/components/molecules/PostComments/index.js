@@ -12,12 +12,13 @@ const Comments = styled.ul`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderGray};
 `;
 
-const PostComments = () => {
+const PostComments = ({ className, children }) => {
   return (
-    <Comments>
-      <Comment username="moongua" context="hahaha" />
-      <Comment username="seo" context="wow" />
-      <Comment username="kim" context="대박!!" />
+    <Comments className={className}>
+      {children}
+      {/* <Comment username="moongua" context="hahaha" /> */}
+      {/* <Comment username="seo" context="wow" /> */}
+      {/* <Comment username="kim" context="대박!!" /> */}
       {/* <Comment>
         <UserName>moongua</UserName>
         <Text>hahaha</Text>

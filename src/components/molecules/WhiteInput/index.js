@@ -23,9 +23,9 @@ const InputContainer = styled.div`
   }
 `;
 
-const WhiteInput = () => {
+const WhiteInput = ({ className }) => {
   return (
-    <InputContainer>
+    <InputContainer className={className}>
       <input />
       <strong>게시</strong>
     </InputContainer>

@@ -10,20 +10,13 @@ const StyledDiv = styled.div`
   /* background-color: yellow; */
 `;
 
-const Thumbnails = ({ posts, setPostOpen }) => {
+const Thumbnails = ({ posts, onClickPost, setPostOpen }) => {
   // console.log(posts);
 
   return (
     <StyledDiv>
       {posts.map((val) => {
-        return (
-          <Thumbnail
-            key={val.id}
-            id={val.id}
-            src={val.images[0].url}
-            onClick={() => setPostOpen(true)}
-          />
-        );
+        return <Thumbnail key={val.id} id={val.id} src={val.images[0].url} onClick={onClickPost} />;
       })}
     </StyledDiv>
   );

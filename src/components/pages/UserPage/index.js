@@ -60,10 +60,14 @@ const UserPage = () => {
 
   const ThumbnailsProps = {
     posts,
+    onClickPost: (e) => {
+      setPostOpen(posts.find((val) => val.id === parseInt(e.target.id)));
+    },
     setPostOpen,
   };
 
   const PostModalProps = {
+    postOpen,
     onExitPost: (e) => {
       if (e.target.className.includes("Container")) {
         setPostOpen(false);

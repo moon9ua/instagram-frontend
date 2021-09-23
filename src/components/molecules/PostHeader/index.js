@@ -13,9 +13,9 @@ const Header = styled.div`
   align-items: center;
 `;
 
-const PostHeader = ({ username, src }) => {
+const PostHeader = ({ className, username, src }) => {
   return (
-    <Header>
+    <Header className={className}>
       <StyledRoundImg src={src} />
       <strong>{username}</strong>
     </Header>
