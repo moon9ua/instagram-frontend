@@ -42,15 +42,12 @@ export const removeError = () => {
 };
 
 export const edit = (username, editForm) => async (dispatch) => {
-  console.log("start");
   dispatch({ type: EDIT });
   try {
     await patchUserAPI(username, editForm);
     dispatch({ type: EDIT_SUCCESS, editForm });
-    console.log("success");
   } catch (e) {
     dispatch({ type: EDIT_ERROR, error: e.message });
-    console.log("fail");
   }
 };
 

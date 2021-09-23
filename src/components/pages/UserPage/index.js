@@ -23,6 +23,19 @@ const UserPage = () => {
     error: postError,
     posts,
     editOpen,
+
+    onClickFollowBtn: () => {
+      console.log("I want follow!");
+    },
+  };
+
+  const UserProfileProps = {
+    error: profileError,
+    info,
+    setEditOpen,
+  };
+
+  const ProfileModalProps = {
     onSubmitEdit: (e) => {
       e.preventDefault();
       dispatch(
@@ -36,21 +49,17 @@ const UserPage = () => {
       );
       setEditOpen(false);
     },
-    onClickFollowBtn: () => {
-      console.log("I want follow!");
+    onExitEdit: (e) => {
+      if (e.target.className.includes("Container")) {
+        setEditOpen(false);
+      }
     },
-  };
-
-  const UserProfileProps = {
-    error: profileError,
-    info,
-    setEditOpen,
   };
 
   return (
     <NavAndFooter
       nav={<NavBar />}
-      context={<UserPosts {...{ UserPostsProps, UserProfileProps }} />}
+      context={<UserPosts {...{ UserPostsProps, UserProfileProps, ProfileModalProps }} />}
       footer={<Footer />}
     />
   );

@@ -18,8 +18,8 @@ const StyledDiv = styled.div`
   padding: 0 20px;
 `;
 
-const UserPosts = ({ UserPostsProps, UserProfileProps }) => {
-  const { error, posts, editOpen, onSubmitEdit } = UserPostsProps;
+const UserPosts = ({ UserPostsProps, UserProfileProps, ProfileModalProps }) => {
+  const { error, posts, editOpen } = UserPostsProps;
 
   const loading = useSelector((state) => state.loading);
 
@@ -31,7 +31,7 @@ const UserPosts = ({ UserPostsProps, UserProfileProps }) => {
       {/* {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />} */}
       {error ? <span>{error}</span> : <Thumbnails posts={posts} />}
       {/* <PostModal isOpen={modalOpen} close={closeModal} /> */}
-      {editOpen ? <ProfileModal onSubmit={onSubmitEdit} /> : null}
+      {editOpen ? <ProfileModal {...ProfileModalProps} /> : null}
     </StyledDiv>
   );
 };
