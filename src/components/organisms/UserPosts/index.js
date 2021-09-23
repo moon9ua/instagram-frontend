@@ -22,19 +22,6 @@ const UserPosts = ({ UserPostsProps, UserProfileProps }) => {
 
   const loading = useSelector((state) => state.loading);
 
-  // const [modalOpen, setModalOpen] = useState(false);
-
-  // const openModal = (e) => {
-  //   console.log(e.target.id);
-  //   setModalOpen(true); // 그냥 반대로 해줘야 하나?
-  // };
-
-  // const closeModal = () => {
-  //   setModalOpen(false);
-  // };
-
-  // console.log(posts);
-
   return loading ? (
     <SpanLoading />
   ) : (
