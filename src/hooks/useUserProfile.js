@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router";
 import { endLoading, startLoading } from "../modules/loading";
 import { getUserAPI } from "../utils/API";
 
@@ -29,7 +28,7 @@ const useUserProfile = (targetName) => {
     if (targetName) doGetUserAPI(targetName); // 진짜 잘 모르겠다..!!! 이렇게 쓰면 안될 것 같은데...
   }, [targetName, dispatch, user]);
 
-  return [error, info, setInfo];
+  return [error, info];
 };
 
 export default useUserProfile;

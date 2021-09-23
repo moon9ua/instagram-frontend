@@ -6,6 +6,7 @@ import SpanLoading from "../../atoms/SpanLoading";
 // import PostModal from "../PostModal";
 import { useSelector } from "react-redux";
 import ProfileModal from "../ProfileModal";
+import PostModal from "../PostModal";
 
 const StyledDiv = styled.div`
   width: 1000px;
@@ -18,8 +19,14 @@ const StyledDiv = styled.div`
   padding: 0 20px;
 `;
 
-const UserPosts = ({ UserPostsProps, UserProfileProps, ProfileModalProps }) => {
-  const { error, posts, editOpen } = UserPostsProps;
+const UserPosts = ({
+  UserPostsProps,
+  UserProfileProps,
+  ProfileModalProps,
+  ThumbnailsProps,
+  PostModalProps,
+}) => {
+  const { error, editOpen, postOpen } = UserPostsProps;
 
   const loading = useSelector((state) => state.loading);
 
@@ -28,10 +35,9 @@ const UserPosts = ({ UserPostsProps, UserProfileProps, ProfileModalProps }) => {
   ) : (
     <StyledDiv>
       <UserProfile {...UserProfileProps} />
-      {/* {error ? <span>{error}</span> : <Thumbnails posts={posts} onClick={openModal} />} */}
-      {error ? <span>{error}</span> : <Thumbnails posts={posts} />}
-      {/* <PostModal isOpen={modalOpen} close={closeModal} /> */}
+      {error ? <span>{error}</span> : <Thumbnails {...ThumbnailsProps} />}
       {editOpen ? <ProfileModal {...ProfileModalProps} /> : null}
+      {postOpen ? <PostModal {...PostModalProps} /> : null}
     </StyledDiv>
   );
 };

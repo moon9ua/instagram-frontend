@@ -25,8 +25,7 @@ const ProfileTitle = ({ username, setEditOpen, onClickFollowBtn }) => {
       {username === myUsername ? (
         <StyledButton
           onClick={() => {
-            console.log("???");
-            setEditOpen((curr) => !curr);
+            setEditOpen(true);
           }}
         >
           프로필 편집

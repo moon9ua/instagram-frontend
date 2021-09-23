@@ -16,13 +16,15 @@ const UserPage = () => {
   } = useSelector((state) => state.session);
 
   const targetName = useTargetName();
-  const [postError, posts, editOpen, setEditOpen] = useUserPosts(targetName);
-  const [profileError, info, setInfo] = useUserProfile(targetName);
+  const [postError, posts] = useUserPosts(targetName);
+  const [profileError, info] = useUserProfile(targetName);
+  const [editOpen, setEditOpen] = useState(false);
+  const [postOpen, setPostOpen] = useState(false);
 
   const UserPostsProps = {
     error: postError,
-    posts,
     editOpen,
+    postOpen,
 
     onClickFollowBtn: () => {
       console.log("I want follow!");
@@ -56,10 +58,33 @@ const UserPage = () => {
     },
   };
 
+  const ThumbnailsProps = {
+    posts,
+    setPostOpen,
+  };
+
+  const PostModalProps = {
+    onExitPost: (e) => {
+      if (e.target.className.includes("Container")) {
+        setPostOpen(false);
+      }
+    },
+  };
+
   return (
     <NavAndFooter
       nav={<NavBar />}
-      context={<UserPosts {...{ UserPostsProps, UserProfileProps, ProfileModalProps }} />}
+      context={
+        <UserPosts
+          {...{
+            UserPostsProps,
+            UserProfileProps,
+            ProfileModalProps,
+            ThumbnailsProps,
+            PostModalProps,
+          }}
+        />
+      }
       footer={<Footer />}
     />
   );

@@ -1,12 +1,22 @@
 import React from "react";
 import styled from "styled-components";
+import Box from "../../atoms/Box";
 
-const StyledDiv = styled.div`
-  /* width: 900px; */
-  /* 폭이 고정이 아니라 사진 따라 달라짐... ㅠㅠ */
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+`;
+
+const StyledBox = styled(Box)`
+  width: 900px;
+  margin: auto;
   height: 600px;
   background-color: yellow;
-  display: flex;
 `;
 
 const StyledImg = styled.img`
@@ -24,17 +34,19 @@ const CommentBox = styled.div``;
 const IconBox = styled.div``;
 const InputBox = styled.div``;
 
-const PostModal = ({ isOpen, close }) => {
+const PostModal = ({ onExitPost }) => {
   return (
-    <StyledDiv>
-      <StyledImg src="https://pbs.twimg.com/media/Etdkb65VcAISs8w.jpg" />
-      <CommentContainer>
-        <NameBox></NameBox>
-        <CommentBox></CommentBox>
-        <IconBox></IconBox>
-        <InputBox></InputBox>
-      </CommentContainer>
-    </StyledDiv>
+    <Container className="Container" onClick={onExitPost}>
+      <StyledBox>
+        <StyledImg src="https://pbs.twimg.com/media/Etdkb65VcAISs8w.jpg" />
+        <CommentContainer>
+          <NameBox></NameBox>
+          <CommentBox></CommentBox>
+          <IconBox></IconBox>
+          <InputBox></InputBox>
+        </CommentContainer>
+      </StyledBox>
+    </Container>
   );
 };
 
