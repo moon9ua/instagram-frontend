@@ -69,6 +69,7 @@ const UserPage = () => {
   const PostModalProps = {
     postOpen,
     onExitPost: (e) => {
+      if (e.target.tagName !== "DIV") return;
       if (e.target.className.includes("Container")) {
         setPostOpen(false);
       }
