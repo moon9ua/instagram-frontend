@@ -69,6 +69,7 @@ const UserPage = () => {
   };
 
   const PostModalProps = {
+    profile,
     postOpen,
     postComments,
     onClickOutside: (e) => {
