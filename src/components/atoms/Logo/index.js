@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledLogo = styled.h1`
-  font-family: ${({ theme }) => theme.fonts.logo};
+const StyledHeader = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes.title};
+  font-family: ${({ theme }) => theme.fonts.logo};
 `;
 
-function Logo() {
-  return <StyledLogo>Instagram</StyledLogo>;
+function Logo({ className }) {
+  return <StyledHeader className={className}>Instagram</StyledHeader>;
 }
 
 export default Logo;

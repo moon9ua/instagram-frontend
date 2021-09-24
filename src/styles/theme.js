@@ -5,6 +5,7 @@ const fontSizes = {
   m: px(14),
   l: px(20),
   xl: px(30),
+  navTitle: px(25),
   title: px(35),
 };
 
@@ -24,6 +25,7 @@ const fonts = {
 
 const widths = {
   loginBox: px(350),
+  maxWidth: px(1000),
 };
 
 const theme = {

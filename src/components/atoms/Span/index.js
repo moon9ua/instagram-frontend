@@ -2,12 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledSpan = styled.span`
-  color: ${({ theme }) => theme.colors.textGray};
-  font-size: ${({ theme }) => theme.fontSizes.s};
+  font-size: ${({ fontSize }) => fontSize};
+  color: ${({ color, theme }) => theme.colors[color]};
+  /* 되나? */
 `;
 
-function Span({ children }) {
-  return <StyledSpan>{children}</StyledSpan>;
+function Span({ className, children, fontSize, color }) {
+  return (
+    <StyledSpan className={className} fontSize={fontSize} color={color}>
+      {children}
+    </StyledSpan>
+  );
 }
+
+StyledSpan.defaultProps = {
+  fontSize: "12px",
+  color: "textGray",
+};
 
 export default Span;

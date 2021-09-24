@@ -5,12 +5,13 @@ const StyledInput = styled.input`
   width: 270px;
   padding: 10px;
   margin: 3px 0;
+  background-color: ${({ theme }) => theme.colors.backgroundGray};
   border: 1px solid ${({ theme }) => theme.colors.borderGray};
   border-radius: 3px;
   box-sizing: border-box;
 `;
 
-const Input = ({ placeholder, name }) => {
+const Input = ({ className, placeholder, name }) => {
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
@@ -19,13 +20,13 @@ const Input = ({ placeholder, name }) => {
 
   return (
     <StyledInput
+      className={className}
       placeholder={placeholder}
       name={name}
       value={value}
       onChange={onChange}
     ></StyledInput>
   );
-  // return <StyledInput placeholder={placeholder} name={name}></StyledInput>;
 };
 
 export default Input;

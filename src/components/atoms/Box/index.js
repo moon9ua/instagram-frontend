@@ -13,9 +13,8 @@ const StyledBox = styled.div`
   box-sizing: border-box;
 `;
 
-const Box = ({ children }) => {
-  // return <div className="box">{content}</div>;
-  return <StyledBox>{children}</StyledBox>;
+const Box = ({ className, children }) => {
+  return <StyledBox className={className}>{children}</StyledBox>;
 };
 
 export default Box;
