@@ -15,7 +15,7 @@ const UserPage = () => {
   const { username: myUsername } = useSelector((state) => state.session.user);
 
   const targetUser = useTargetUser();
-  const [profile, profileError] = useUserProfile(targetUser);
+  const [profile, profileError, setProfile] = useUserProfile(targetUser);
   const [posts, postError] = useUserPosts(targetUser);
   const [editOpen, setEditOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
@@ -41,15 +41,15 @@ const UserPage = () => {
   const ProfileModalProps = {
     onSubmit: (e) => {
       e.preventDefault();
-      dispatch(
-        edit(myUsername, {
-          username: myUsername,
-          email: e.target.email.value,
-          image: e.target.image.value,
-          name: e.target.name.value,
-          text: e.target.text.value,
-        })
-      );
+      const newProfile = {
+        username: myUsername,
+        email: e.target.email.value,
+        image: e.target.image.value,
+        name: e.target.name.value,
+        text: e.target.text.value,
+      };
+      dispatch(edit(myUsername, newProfile));
+      setProfile(newProfile);
       setEditOpen(false);
     },
     onClickOutside: (e) => {

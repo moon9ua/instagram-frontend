@@ -27,7 +27,7 @@ const useUserProfile = (targetName) => {
     if (targetName) doGetUserAPI(targetName); // 진짜 잘 모르겠다..!!! 이렇게 쓰면 안될 것 같은데...
   }, [targetName, dispatch]);
 
-  return [profile, error];
+  return [profile, error, setProfile];
 };
 
 export default useUserProfile;
