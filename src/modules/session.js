@@ -1,4 +1,4 @@
-import { getUserAPI, loginAPI, patchUserAPI, registerAPI, test } from "../utils/API";
+import { getUserAPI, loginAPI, patchUserAPI, registerAPI } from "../utils/API";
 
 // action 타입
 const SIGNIN = "session/SIGNIN";

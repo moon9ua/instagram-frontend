@@ -3,10 +3,10 @@ import styled from "styled-components";
 import UserProfile from "../UserProfile";
 import Thumbnails from "../../molecules/Thumbnails";
 import SpanLoading from "../../atoms/SpanLoading";
-// import PostModal from "../PostModal";
 import { useSelector } from "react-redux";
 import ProfileModal from "../ProfileModal";
 import PostModal from "../PostModal";
+import SpanError from "../../atoms/SpanError";
 
 const StyledDiv = styled.div`
   width: 1000px;
@@ -27,7 +27,6 @@ const UserPosts = ({
   PostModalProps,
 }) => {
   const { error, editOpen, postOpen } = UserPostsProps;
-
   const loading = useSelector((state) => state.loading);
 
   return loading ? (
@@ -35,7 +34,7 @@ const UserPosts = ({
   ) : (
     <StyledDiv>
       <UserProfile {...UserProfileProps} />
-      {error ? <span>{error}</span> : <Thumbnails {...ThumbnailsProps} />}
+      {error ? <SpanError>{error}</SpanError> : <Thumbnails {...ThumbnailsProps} />}
       {editOpen ? <ProfileModal {...ProfileModalProps} /> : null}
       {postOpen ? <PostModal {...PostModalProps} /> : null}
     </StyledDiv>

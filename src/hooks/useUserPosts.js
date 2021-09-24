@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router";
 import { endLoading, startLoading } from "../modules/loading";
 import { getPostsAPI } from "../utils/API";
 
@@ -28,7 +27,7 @@ const useUserPosts = (targetName) => {
     if (targetName) doGetPostsAPI(targetName);
   }, [targetName, dispatch]);
 
-  return [error, posts];
+  return [posts, error];
 };
 
 export default useUserPosts;

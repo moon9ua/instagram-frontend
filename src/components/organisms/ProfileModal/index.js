@@ -22,7 +22,7 @@ const StyledBox = styled(Box)`
   border-radius: 5%;
 `;
 
-const ProfileModal = ({ onSubmitEdit, onExitEdit }) => {
+const ProfileModal = ({ onSubmit, onClickOutside }) => {
   const inputInfo = {
     email: "이메일 주소",
     image: "프로필 사진",
@@ -31,7 +31,7 @@ const ProfileModal = ({ onSubmitEdit, onExitEdit }) => {
   };
 
   return (
-    <Container className="Container" onSubmit={onSubmitEdit} onClick={onExitEdit}>
+    <Container className="Container" onSubmit={onSubmit} onClick={onClickOutside}>
       <StyledBox>
         <Form {...{ inputInfo, btnName: "프로필 수정" }} />
       </StyledBox>

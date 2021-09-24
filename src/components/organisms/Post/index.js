@@ -70,7 +70,7 @@ const Post = ({ username, img, id }) => {
       <PostIcons />
       <PostComments>
         {comments.map((val) => {
-          return <Comment username={val.username} context={val.text} />;
+          return <Comment key={val.id} username={val.username} context={val.text} />;
         })}
       </PostComments>
       <WhiteInput onPostComment={onPostComment} />

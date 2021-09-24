@@ -61,11 +61,12 @@ const StyledPostComments = styled(PostComments)`
   padding: 15px;
 `;
 
-const PostModal = ({ postOpen, onExitPost, postComments, onPostComment }) => {
-  const { id, username, text, views, images } = postOpen;
+const PostModal = ({ postOpen, postComments, onClickOutside, onCreateComment }) => {
+  // const { id, username, text, views, images } = postOpen;
+  const { username, text, images } = postOpen;
 
   return (
-    <Container className="Container" onClick={onExitPost}>
+    <Container className="Container" onClick={onClickOutside}>
       <StyledBox>
         <StyledImg src={images[0].url} />
         <CommentBox>
@@ -81,7 +82,7 @@ const PostModal = ({ postOpen, onExitPost, postComments, onPostComment }) => {
             })}
           </StyledPostComments>
           <StyledPostIcons />
-          <StyledWhiteInput onPostComment={onPostComment} />
+          <StyledWhiteInput onCreateComment={onCreateComment} />
         </CommentBox>
       </StyledBox>
     </Container>

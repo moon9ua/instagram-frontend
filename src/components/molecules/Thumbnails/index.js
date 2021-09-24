@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Thumbnail from "../../atoms/Thumbnail";
 
@@ -10,13 +10,13 @@ const StyledDiv = styled.div`
   /* background-color: yellow; */
 `;
 
-const Thumbnails = ({ posts, onClickPost }) => {
-  // console.log(posts);
-
+const Thumbnails = ({ posts, onClickThumbnail }) => {
   return (
     <StyledDiv>
       {posts.map((val) => {
-        return <Thumbnail key={val.id} id={val.id} src={val.images[0].url} onClick={onClickPost} />;
+        return (
+          <Thumbnail key={val.id} id={val.id} src={val.images[0].url} onClick={onClickThumbnail} />
+        );
       })}
     </StyledDiv>
   );

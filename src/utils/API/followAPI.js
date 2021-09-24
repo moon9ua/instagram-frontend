@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 const ENDPOINT = "/api";
 
 const FOLLOW = "/follow";

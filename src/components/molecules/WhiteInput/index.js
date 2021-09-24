@@ -15,6 +15,7 @@ const InputContainer = styled.div`
   *:focus {
     border: 0px;
     outline: none;
+    width: 90%;
   }
 
   strong {
@@ -24,7 +25,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const WhiteInput = ({ className, onPostComment }) => {
+const WhiteInput = ({ className, onCreateComment }) => {
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
@@ -36,7 +37,7 @@ const WhiteInput = ({ className, onPostComment }) => {
       <input onChange={onChange} value={value} />
       <strong
         onClick={() => {
-          onPostComment(value);
+          onCreateComment(value);
           setValue("");
         }}
       >

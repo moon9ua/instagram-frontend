@@ -11,7 +11,6 @@ export const getUserAPI = async (username) => {
   }
 
   const json = await response.json();
-  console.log("getUserAPI:", json);
   return json; // email, image, name, text, username // ⬜️ 확인 및 사용 X
 };
 
@@ -23,8 +22,6 @@ export const deleteUserAPI = async (username) => {
   if (response.status >= 400) {
     throw new Error(`탈퇴에 실패했습니다. 다시 시도하십시오.`);
   }
-
-  console.log(response); // ⬜️ 확인 및 사용 X
 };
 
 export const patchUserAPI = async (username, userInfo) => {
@@ -39,8 +36,6 @@ export const patchUserAPI = async (username, userInfo) => {
   if (response.status >= 400) {
     throw new Error(`갱신에 실패했습니다. 다시 시도하십시오.`);
   }
-
-  console.log(response); // ⬜️ 확인 및 사용 X
 };
 
 export const registerAPI = async (registerInfo) => {

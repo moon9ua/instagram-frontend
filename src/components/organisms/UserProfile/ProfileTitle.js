@@ -14,7 +14,7 @@ const StyledButton = styled(Button)`
   margin: 0 20px;
 `;
 
-const ProfileTitle = ({ username, setEditOpen, onClickFollowBtn }) => {
+const ProfileTitle = ({ username, onClickEditBtn, onClickFollowBtn }) => {
   const { username: myUsername } = useSelector((state) => state.session.user);
 
   return (
@@ -23,21 +23,9 @@ const ProfileTitle = ({ username, setEditOpen, onClickFollowBtn }) => {
         {username}
       </Span>
       {username === myUsername ? (
-        <StyledButton
-          onClick={() => {
-            setEditOpen(true);
-          }}
-        >
-          프로필 편집
-        </StyledButton>
+        <StyledButton onClick={onClickEditBtn}>프로필 편집</StyledButton>
       ) : (
-        <StyledButton
-          onFollow={() => {
-            console.log("!!!");
-          }}
-        >
-          팔로우
-        </StyledButton>
+        <StyledButton onFollow={onClickFollowBtn}>팔로우</StyledButton>
       )}
     </RowContainer>
   );

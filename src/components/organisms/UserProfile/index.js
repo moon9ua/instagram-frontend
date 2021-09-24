@@ -1,7 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 import RoundImg from "../../atoms/RoundImg";
+import SpanError from "../../atoms/SpanError";
 import ProfileContext from "./ProfileContext";
 import ProfileInfo from "./ProfileInfo";
 import ProfileTitle from "./ProfileTitle";
@@ -22,18 +22,17 @@ const InfoContainer = styled.div`
   margin: 0 0 0 50px;
 `;
 
-const UserProfile = ({ error, info, setEditOpen, onClickFollowBtn }) => {
-  const { image, name, text, username } = info;
+const UserProfile = ({ error, profile, onClickEditBtn, onClickFollowBtn }) => {
+  const { image, name, text, username, followers, followings, posts } = profile;
 
   return error ? (
-    error
+    <SpanError>{error}</SpanError>
   ) : (
     <StyledDiv>
-      {/* <RoundImg src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg" /> */}
       <RoundImg src={image} />
       <InfoContainer>
-        <ProfileTitle {...{ username, setEditOpen, onClickFollowBtn }} />
-        <ProfileInfo />
+        <ProfileTitle {...{ username, onClickEditBtn, onClickFollowBtn }} />
+        <ProfileInfo {...{ posts, followers, followings }} />
         <ProfileContext name={name} context={text} />
       </InfoContainer>
     </StyledDiv>
