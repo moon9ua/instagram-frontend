@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   /* background-color: yellow; */
 `;
 
-const Thumbnails = ({ posts, onClickPost, setPostOpen }) => {
+const Thumbnails = ({ posts, onClickPost }) => {
   // console.log(posts);
 
   return (

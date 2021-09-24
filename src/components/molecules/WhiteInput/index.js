@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const InputContainer = styled.div`
@@ -20,14 +20,28 @@ const InputContainer = styled.div`
   strong {
     font-size: 14px;
     color: ${({ theme }) => theme.colors.blue};
+    cursor: pointer;
   }
 `;
 
-const WhiteInput = ({ className }) => {
+const WhiteInput = ({ className, onPostComment }) => {
+  const [value, setValue] = useState("");
+
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
     <InputContainer className={className}>
-      <input />
-      <strong>게시</strong>
+      <input onChange={onChange} value={value} />
+      <strong
+        onClick={() => {
+          onPostComment(value);
+          setValue("");
+        }}
+      >
+        게시
+      </strong>
     </InputContainer>
   );
 };

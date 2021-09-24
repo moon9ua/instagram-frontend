@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import WhiteInput from "../../molecules/WhiteForm";
+import WhiteInput from "../../molecules/WhiteInput";
 import PostComments from "../../molecules/PostComments";
 import PostHeader from "../../molecules/PostHeader";
 import PostIcons from "../../molecules/PostIcons";

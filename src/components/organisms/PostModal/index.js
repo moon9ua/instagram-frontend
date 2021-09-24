@@ -61,7 +61,7 @@ const StyledPostComments = styled(PostComments)`
   padding: 15px;
 `;
 
-const PostModal = ({ postOpen, onExitPost }) => {
+const PostModal = ({ postOpen, onExitPost, postComments, onPostComment }) => {
   const { id, username, text, views, images } = postOpen;
 
   return (
@@ -76,11 +76,12 @@ const PostModal = ({ postOpen, onExitPost }) => {
 
           <StyledPostComments>
             {text ? <Comment username={username} context={text} /> : null}
-            {/* <Comment username="seo" context="wow" /> */}
-            {/* <Comment username="kim" context="대박!!" /> */}
+            {postComments.map((val) => {
+              return <Comment key={val.id} username={val.username} context={val.text} />;
+            })}
           </StyledPostComments>
           <StyledPostIcons />
-          <StyledWhiteInput />
+          <StyledWhiteInput onPostComment={onPostComment} />
         </CommentBox>
       </StyledBox>
     </Container>

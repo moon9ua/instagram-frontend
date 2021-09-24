@@ -4,6 +4,7 @@ import useTargetName from "../../../hooks/useTargetName";
 import useUserPosts from "../../../hooks/useUserPosts";
 import useUserProfile from "../../../hooks/useUserProfile";
 import { edit } from "../../../modules/session";
+import { createCommentAPI, getCommentOfPostAPI } from "../../../utils/API";
 import Footer from "../../organisms/Footer";
 import NavBar from "../../organisms/NavBar";
 import UserPosts from "../../organisms/UserPosts";
@@ -20,6 +21,7 @@ const UserPage = () => {
   const [profileError, info] = useUserProfile(targetName);
   const [editOpen, setEditOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
+  const [postComments, setPostComments] = useState([]);
 
   const UserPostsProps = {
     error: postError,
@@ -60,10 +62,12 @@ const UserPage = () => {
 
   const ThumbnailsProps = {
     posts,
-    onClickPost: (e) => {
+    onClickPost: async (e) => {
+      const comments = await getCommentOfPostAPI(e.target.id);
+      setPostComments(comments);
       setPostOpen(posts.find((val) => val.id === parseInt(e.target.id)));
     },
-    setPostOpen,
+    // setPostOpen,
   };
 
   const PostModalProps = {
@@ -73,6 +77,18 @@ const UserPage = () => {
       if (e.target.className.includes("Container")) {
         setPostOpen(false);
       }
+    },
+    postComments,
+    onPostComment: async (value) => {
+      await createCommentAPI({
+        nested: false,
+        parentId: null,
+        postId: postOpen.id,
+        text: value,
+        username: username,
+      });
+      const comments = await getCommentOfPostAPI(postOpen.id);
+      setPostComments(comments);
     },
   };
 
