@@ -17,7 +17,6 @@ export const createCommentAPI = async (commentInfo) => {
   }
 
   const json = await response.json();
-  console.log(json); // ⬜️
   return json;
 };
 
@@ -29,8 +28,6 @@ export const deleteCommentAPI = async (commentId) => {
   if (response.status >= 400) {
     throw new Error(`댓글 삭제에 실패했습니다. 다시 시도하십시오.`);
   }
-
-  console.log(response); // ⬜️
 };
 
 export const getCommentOfCommentAPI = async (commentId) => {
@@ -41,7 +38,6 @@ export const getCommentOfCommentAPI = async (commentId) => {
   }
 
   const json = await response.json();
-  console.log(json); // ⬜️
   return json;
 };
 
@@ -53,6 +49,5 @@ export const getCommentOfPostAPI = async (postId) => {
   }
 
   const json = await response.json();
-  console.log(json); // ⬜️
   return json;
 };

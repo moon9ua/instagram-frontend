@@ -17,8 +17,8 @@ const UserPage = () => {
   } = useSelector((state) => state.session);
 
   const targetName = useTargetName();
-  const [postError, posts] = useUserPosts(targetName);
   const [profileError, info] = useUserProfile(targetName);
+  const [postError, posts] = useUserPosts(targetName);
   const [editOpen, setEditOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
   const [postComments, setPostComments] = useState([]);

@@ -1,6 +1,7 @@
 const ENDPOINT = "/api";
 
 const POSTS = "/posts";
+const FEEDS = "/feeds";
 
 export const createPostAPI = async (postInfo) => {
   const response = await fetch(ENDPOINT + POSTS, {
@@ -33,6 +34,17 @@ export const getPostsAPI = async (username) => {
 
   if (response.status >= 400) {
     throw new Error("포스트 불러오기를 실패했습니다. 다시 시도하십시오.");
+  }
+
+  const { posts } = await response.json();
+  return posts;
+};
+
+export const getFeedsAPI = async () => {
+  const response = await fetch(ENDPOINT + POSTS + FEEDS);
+
+  if (response.status >= 400) {
+    throw new Error("Feed 불러오기를 실패했습니다. 다시 시도하십시오.");
   }
 
   const { posts } = await response.json();

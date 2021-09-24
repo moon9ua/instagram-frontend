@@ -1,14 +1,16 @@
+import { useSelector } from "react-redux";
+
 const ENDPOINT = "/api";
 
 const FOLLOW = "/follow";
 const FOLLOWERS = "/followers";
 const FOLLOWINGS = "/followings";
 
-export const followAPI = async (username) => {
+export const followAPI = async (username, token) => {
   const response = await fetch(ENDPOINT + FOLLOW + "/" + username, {
     method: "POST",
     headers: {
-      token: "...", // 토큰 넣는 방법 어떻게?
+      token, // 토큰 넣는 방법 어떻게?
     },
   });
 

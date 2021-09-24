@@ -8,17 +8,12 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const FollowPosts = () => {
-  // const [state, setState] = useState({
-  //   posts: [],
-  //   loading: [],
-  // });
-
+const FollowPosts = ({ posts }) => {
   return (
     <Container>
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((val) => {
+        return <Post key={val.id} username={val.username} img={val.images[0].url} id={val.id} />;
+      })}
     </Container>
   );
 };

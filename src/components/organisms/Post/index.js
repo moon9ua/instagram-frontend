@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import WhiteInput from "../../molecules/WhiteInput";
 import PostComments from "../../molecules/PostComments";
 import PostHeader from "../../molecules/PostHeader";
 import PostIcons from "../../molecules/PostIcons";
 import Comment from "../../molecules/Comment";
+import { createCommentAPI, getCommentOfPostAPI, getUserAPI } from "../../../utils/API";
+import { useSelector } from "react-redux";
 
 const StyledDiv = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderGray};
@@ -17,26 +19,60 @@ const StyledDiv = styled.div`
   /* background-color: purple; */
   border-radius: 3px;
   /* align-items: center; */
+
+  img {
+    border-top: 1px solid ${({ theme }) => theme.colors.borderGray};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderGray};
+  }
 `;
 
-const Post = () => {
+const Post = ({ username, img, id }) => {
+  const { username: myUsername } = useSelector((state) => state.session.user);
+
+  const [user, setUser] = useState({});
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    const doGetUserAPI = async (target) => {
+      const userInfo = await getUserAPI(target);
+      setUser(userInfo);
+    };
+
+    doGetUserAPI(username);
+  }, [username]);
+
+  useEffect(() => {
+    const doGetCommentOfPostAPI = async (postId) => {
+      const response = await getCommentOfPostAPI(postId);
+      setComments(response);
+    };
+
+    doGetCommentOfPostAPI(id);
+  }, [id]);
+
+  const onPostComment = async (value) => {
+    await createCommentAPI({
+      nested: false,
+      parentId: null,
+      postId: id,
+      text: value,
+      username: myUsername,
+    });
+
+    setComments(await getCommentOfPostAPI(id));
+  };
+
   return (
     <StyledDiv>
-      <PostHeader
-        username="username"
-        src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg"
-      />
-      <img
-        src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg"
-        alt=""
-      />
+      <PostHeader username={username} src={user.images} />
+      <img src={img} alt="" />
       <PostIcons />
       <PostComments>
-        <Comment username="seo" context="wow" />
-        <Comment username="kim" context="대박!!" />
+        {comments.map((val) => {
+          return <Comment username={val.username} context={val.text} />;
+        })}
       </PostComments>
-
-      <WhiteInput />
+      <WhiteInput onPostComment={onPostComment} />
     </StyledDiv>
   );
 };
