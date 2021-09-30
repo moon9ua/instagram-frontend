@@ -40,8 +40,12 @@ export const getPostsAPI = async (username) => {
   return posts;
 };
 
-export const getFeedsAPI = async () => {
-  const response = await fetch(ENDPOINT + POSTS + FEEDS);
+export const getFeedsAPI = async (token) => {
+  const response = await fetch(ENDPOINT + POSTS + FEEDS, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   if (response.status >= 400) {
     throw new Error("Feed 불러오기를 실패했습니다. 다시 시도하십시오.");

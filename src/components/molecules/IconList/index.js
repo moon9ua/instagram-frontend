@@ -9,8 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Icon from "../../atoms/Icon";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../../../modules/posts";
+import { useSelector } from "react-redux";
 
 const StyledUl = styled.ul`
   display: flex;
@@ -19,15 +18,9 @@ const StyledUl = styled.ul`
 `;
 
 const IconList = () => {
-  const dispatch = useDispatch();
   const {
     user: { username },
   } = useSelector((state) => state.session);
-  // const { username: selectedUser } = useSelector((state) => state.posts);
-
-  const onClick = () => {
-    dispatch(getPosts(username));
-  };
 
   return (
     <StyledUl>
@@ -39,7 +32,7 @@ const IconList = () => {
       </Link>
       <Icon icon={faCompass} name="explore" />
       <Icon icon={faHeart} name="feed" />
-      <Link to={`/${username}`} onClick={onClick}>
+      <Link to={`/${username}`}>
         <Icon icon={faUserCircle} name="my" />
       </Link>
     </StyledUl>

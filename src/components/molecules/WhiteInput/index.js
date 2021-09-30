@@ -15,6 +15,7 @@ const InputContainer = styled.div`
   *:focus {
     border: 0px;
     outline: none;
+    width: 90%;
   }
 
   strong {

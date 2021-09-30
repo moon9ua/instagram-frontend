@@ -1,4 +1,4 @@
-import { getUserAPI, loginAPI, patchUserAPI, registerAPI, test } from "../utils/API";
+import { getUserAPI, loginAPI, patchUserAPI, registerAPI } from "../utils/API";
 
 // action 타입
 const SIGNIN = "session/SIGNIN";
@@ -41,10 +41,10 @@ export const removeError = () => {
   return { type: REMOVE_ERROR };
 };
 
-export const edit = (username, editForm) => async (dispatch) => {
+export const edit = (username, editForm, token) => async (dispatch) => {
   dispatch({ type: EDIT });
   try {
-    await patchUserAPI(username, editForm);
+    await patchUserAPI(username, editForm, token);
     dispatch({ type: EDIT_SUCCESS, editForm });
   } catch (e) {
     dispatch({ type: EDIT_ERROR, error: e.message });

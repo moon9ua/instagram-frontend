@@ -61,23 +61,32 @@ const StyledPostComments = styled(PostComments)`
   padding: 15px;
 `;
 
-const PostModal = ({ postOpen, onExitPost, postComments, onPostComment }) => {
-  const { id, username, text, views, images } = postOpen;
+const PostModal = ({
+  profile,
+  postOpen,
+  postComments,
+  onClickOutside,
+  onPostComment,
+}) => {
+  // const { id, username, text, views, images } = postOpen;
+  const { username, text, images } = postOpen;
 
   return (
-    <Container className="Container" onClick={onExitPost}>
+    <Container className="Container" onClick={onClickOutside}>
       <StyledBox>
         <StyledImg src={images[0].url} />
         <CommentBox>
-          <StyledPostHeader
-            username={username}
-            src="https://pbs.twimg.com/profile_images/1400720202396930048/v81b6I-j_400x400.jpg"
-          />
-
+          <StyledPostHeader username={username} src={profile.image} />
           <StyledPostComments>
             {text ? <Comment username={username} context={text} /> : null}
             {postComments.map((val) => {
-              return <Comment key={val.id} username={val.username} context={val.text} />;
+              return (
+                <Comment
+                  key={val.id}
+                  username={val.username}
+                  context={val.text}
+                />
+              );
             })}
           </StyledPostComments>
           <StyledPostIcons />

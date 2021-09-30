@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useTargetName from "../../../hooks/useTargetName";
+import useTargetUser from "../../../hooks/useTargetUser";
 import useUserPosts from "../../../hooks/useUserPosts";
 import useUserProfile from "../../../hooks/useUserProfile";
 import { edit } from "../../../modules/session";
@@ -13,12 +13,13 @@ import NavAndFooter from "../../templates/NavAndFooter";
 const UserPage = () => {
   const dispatch = useDispatch();
   const {
-    user: { username },
+    token,
+    user: { username: myUsername },
   } = useSelector((state) => state.session);
 
-  const targetName = useTargetName();
-  const [profileError, info] = useUserProfile(targetName);
-  const [postError, posts] = useUserPosts(targetName);
+  const targetUser = useTargetUser();
+  const [profile, profileError, setProfile] = useUserProfile(targetUser);
+  const [posts, postError] = useUserPosts(targetUser);
   const [editOpen, setEditOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
   const [postComments, setPostComments] = useState([]);
@@ -27,33 +28,34 @@ const UserPage = () => {
     error: postError,
     editOpen,
     postOpen,
-
-    onClickFollowBtn: () => {
-      console.log("I want follow!");
-    },
   };
 
   const UserProfileProps = {
     error: profileError,
-    info,
-    setEditOpen,
+    profile,
+    onClickEditBtn: () => {
+      setEditOpen(true);
+    },
+    onClickFollowBtn: (e) => {
+      console.log(e);
+    },
   };
 
   const ProfileModalProps = {
-    onSubmitEdit: (e) => {
+    onSubmit: (e) => {
       e.preventDefault();
-      dispatch(
-        edit(username, {
-          username,
-          email: e.target.email.value,
-          image: e.target.image.value,
-          name: e.target.name.value,
-          text: e.target.text.value,
-        })
-      );
+      const newProfile = {
+        username: myUsername,
+        email: e.target.email.value,
+        image: e.target.image.value,
+        name: e.target.name.value,
+        text: e.target.text.value,
+      };
+      dispatch(edit(myUsername, newProfile, token));
+      setProfile(newProfile);
       setEditOpen(false);
     },
-    onExitEdit: (e) => {
+    onClickOutside: (e) => {
       if (e.target.className.includes("Container")) {
         setEditOpen(false);
       }
@@ -62,33 +64,35 @@ const UserPage = () => {
 
   const ThumbnailsProps = {
     posts,
-    onClickPost: async (e) => {
+    onClickThumbnail: async (e) => {
       const comments = await getCommentOfPostAPI(e.target.id);
       setPostComments(comments);
       setPostOpen(posts.find((val) => val.id === parseInt(e.target.id)));
     },
-    // setPostOpen,
   };
 
   const PostModalProps = {
+    profile,
     postOpen,
-    onExitPost: (e) => {
+    postComments,
+    onClickOutside: (e) => {
       if (e.target.tagName !== "DIV") return;
       if (e.target.className.includes("Container")) {
         setPostOpen(false);
       }
     },
-    postComments,
     onPostComment: async (value) => {
-      await createCommentAPI({
-        nested: false,
-        parentId: null,
-        postId: postOpen.id,
-        text: value,
-        username: username,
-      });
-      const comments = await getCommentOfPostAPI(postOpen.id);
-      setPostComments(comments);
+      await createCommentAPI(
+        {
+          nested: false,
+          parentId: null,
+          postId: postOpen.id,
+          text: value,
+          username: myUsername,
+        },
+        token
+      );
+      setPostComments(await getCommentOfPostAPI(postOpen.id));
     },
   };
 

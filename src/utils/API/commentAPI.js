@@ -3,12 +3,13 @@ const ENDPOINT = "/api";
 const COMMENTS = "/comments";
 const POSTS = "/posts";
 
-export const createCommentAPI = async (commentInfo) => {
+export const createCommentAPI = async (commentInfo, token) => {
   const response = await fetch(ENDPOINT + COMMENTS, {
     method: "POST",
     body: JSON.stringify(commentInfo),
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -31,7 +32,9 @@ export const deleteCommentAPI = async (commentId) => {
 };
 
 export const getCommentOfCommentAPI = async (commentId) => {
-  const response = await fetch(ENDPOINT + COMMENTS + "/" + commentId + COMMENTS);
+  const response = await fetch(
+    ENDPOINT + COMMENTS + "/" + commentId + COMMENTS
+  );
 
   if (response.status >= 400) {
     throw new Error(`대댓글 불러오기에 실패했습니다. 다시 시도하십시오.`);
@@ -45,7 +48,9 @@ export const getCommentOfPostAPI = async (postId) => {
   const response = await fetch(ENDPOINT + POSTS + "/" + postId + COMMENTS);
 
   if (response.status >= 400) {
-    throw new Error(`포스트의 댓글 불러오기에 실패했습니다. 다시 시도하십시오.`);
+    throw new Error(
+      `포스트의 댓글 불러오기에 실패했습니다. 다시 시도하십시오.`
+    );
   }
 
   const json = await response.json();
