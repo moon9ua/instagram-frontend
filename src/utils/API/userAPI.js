@@ -24,12 +24,13 @@ export const deleteUserAPI = async (username) => {
   }
 };
 
-export const patchUserAPI = async (username, userInfo) => {
+export const patchUserAPI = async (username, userInfo, token) => {
   const response = await fetch(ENDPOINT + USER + "/" + username, {
     method: "PATCH",
     body: JSON.stringify(userInfo),
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 

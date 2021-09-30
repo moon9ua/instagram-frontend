@@ -5,7 +5,11 @@ import PostComments from "../../molecules/PostComments";
 import PostHeader from "../../molecules/PostHeader";
 import PostIcons from "../../molecules/PostIcons";
 import Comment from "../../molecules/Comment";
-import { createCommentAPI, getCommentOfPostAPI, getUserAPI } from "../../../utils/API";
+import {
+  createCommentAPI,
+  getCommentOfPostAPI,
+  getUserAPI,
+} from "../../../utils/API";
 import { useSelector } from "react-redux";
 
 const StyledDiv = styled.div`
@@ -28,7 +32,10 @@ const Styledimg = styled.img`
 `;
 
 const Post = ({ username, img, id }) => {
-  const { username: myUsername } = useSelector((state) => state.session.user);
+  const {
+    token,
+    user: { username: myUsername },
+  } = useSelector((state) => state.session);
 
   const [user, setUser] = useState({});
   const [comments, setComments] = useState([]);
@@ -52,13 +59,16 @@ const Post = ({ username, img, id }) => {
   }, [id]);
 
   const onPostComment = async (value) => {
-    await createCommentAPI({
-      nested: false,
-      parentId: null,
-      postId: id,
-      text: value,
-      username: myUsername,
-    });
+    await createCommentAPI(
+      {
+        nested: false,
+        parentId: null,
+        postId: id,
+        text: value,
+        username: myUsername,
+      },
+      token
+    );
 
     setComments(await getCommentOfPostAPI(id));
   };
@@ -70,7 +80,9 @@ const Post = ({ username, img, id }) => {
       <PostIcons />
       <PostComments>
         {comments.map((val) => {
-          return <Comment key={val.id} username={val.username} context={val.text} />;
+          return (
+            <Comment key={val.id} username={val.username} context={val.text} />
+          );
         })}
       </PostComments>
       <WhiteInput onPostComment={onPostComment} />

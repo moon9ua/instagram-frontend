@@ -12,7 +12,10 @@ import NavAndFooter from "../../templates/NavAndFooter";
 
 const UserPage = () => {
   const dispatch = useDispatch();
-  const { username: myUsername } = useSelector((state) => state.session.user);
+  const {
+    token,
+    user: { username: myUsername },
+  } = useSelector((state) => state.session);
 
   const targetUser = useTargetUser();
   const [profile, profileError, setProfile] = useUserProfile(targetUser);
@@ -48,7 +51,7 @@ const UserPage = () => {
         name: e.target.name.value,
         text: e.target.text.value,
       };
-      dispatch(edit(myUsername, newProfile));
+      dispatch(edit(myUsername, newProfile, token));
       setProfile(newProfile);
       setEditOpen(false);
     },
@@ -78,14 +81,17 @@ const UserPage = () => {
         setPostOpen(false);
       }
     },
-    onCreateComment: async (value) => {
-      await createCommentAPI({
-        nested: false,
-        parentId: null,
-        postId: postOpen.id,
-        text: value,
-        username: myUsername,
-      });
+    onPostComment: async (value) => {
+      await createCommentAPI(
+        {
+          nested: false,
+          parentId: null,
+          postId: postOpen.id,
+          text: value,
+          username: myUsername,
+        },
+        token
+      );
       setPostComments(await getCommentOfPostAPI(postOpen.id));
     },
   };

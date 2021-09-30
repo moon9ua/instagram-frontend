@@ -61,7 +61,13 @@ const StyledPostComments = styled(PostComments)`
   padding: 15px;
 `;
 
-const PostModal = ({ profile, postOpen, postComments, onClickOutside, onCreateComment }) => {
+const PostModal = ({
+  profile,
+  postOpen,
+  postComments,
+  onClickOutside,
+  onPostComment,
+}) => {
   // const { id, username, text, views, images } = postOpen;
   const { username, text, images } = postOpen;
 
@@ -74,11 +80,17 @@ const PostModal = ({ profile, postOpen, postComments, onClickOutside, onCreateCo
           <StyledPostComments>
             {text ? <Comment username={username} context={text} /> : null}
             {postComments.map((val) => {
-              return <Comment key={val.id} username={val.username} context={val.text} />;
+              return (
+                <Comment
+                  key={val.id}
+                  username={val.username}
+                  context={val.text}
+                />
+              );
             })}
           </StyledPostComments>
           <StyledPostIcons />
-          <StyledWhiteInput onCreateComment={onCreateComment} />
+          <StyledWhiteInput onPostComment={onPostComment} />
         </CommentBox>
       </StyledBox>
     </Container>

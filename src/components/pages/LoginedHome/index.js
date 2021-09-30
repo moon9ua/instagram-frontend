@@ -4,21 +4,22 @@ import NavBar from "../../organisms/NavBar";
 import NavAndFooter from "../../templates/NavAndFooter";
 import FollowPosts from "../../organisms/FollowPosts";
 import { getFeedsAPI } from "../../../utils/API/postAPI";
+import { useSelector } from "react-redux";
 // import { followAPI, getFollowingsAPI } from "../../../utils/API";
 // import { useSelector } from "react-redux";
 
 const LoginedHome = () => {
   const [posts, setPosts] = useState([]);
-  // const { token } = useSelector((state) => state.session.user);
+  const { token } = useSelector((state) => state.session);
 
   useEffect(() => {
-    const doGetFeedsAPI = async () => {
-      const feedPosts = await getFeedsAPI();
+    const doGetFeedsAPI = async (token) => {
+      const feedPosts = await getFeedsAPI(token);
       setPosts(feedPosts);
     };
 
-    doGetFeedsAPI();
-  }, []);
+    doGetFeedsAPI(token);
+  }, [token]);
 
   const FollowPostsProps = {
     posts,

@@ -25,7 +25,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const WhiteInput = ({ className, onCreateComment }) => {
+const WhiteInput = ({ className, onPostComment }) => {
   const [value, setValue] = useState("");
 
   const onChange = (e) => {
@@ -37,7 +37,7 @@ const WhiteInput = ({ className, onCreateComment }) => {
       <input onChange={onChange} value={value} />
       <strong
         onClick={() => {
-          onCreateComment(value);
+          onPostComment(value);
           setValue("");
         }}
       >
