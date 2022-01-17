@@ -5,6 +5,39 @@
 - 강의나 완성된 코드를 참고하지 않고 한땀한땀 공부하며 구현한 리액트 첫 프로젝트... 💦
 - [백엔드](https://github.com/h000/instagram-backend)와 함께 진행했다.
 
+<details>
+<summary>서버 실행 방법</summary>
+<div markdown="1">
+
+  * src/main/resources/application.properties 추가
+    ```
+    spring.datasource.url=jdbc:mysql://localhost:3306/instagram_db?autoReconnect=true
+    spring.datasource.username=user
+    spring.datasource.password=pwd
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+
+    spring.jpa.hibernate.ddl-auto=create
+    spring.jpa.show-sql: true
+    #spring.datasource.initialization-mode=always
+
+    jwt.secret=c2VjcmV0a2V5LWZvci1pbnN0YWdyYW0tYmFja2VuZC1jbG9uZQo=
+    jwt.expiration.time=86400
+
+
+    springdoc.swaqgger-ui.enabled=true
+    ```
+  * `java -jar build/libs/instagram-backend-0.0.1-SNAPSHOT.jar`
+  * 서버를 실행한 후, 다른 터미널을 켜서 다음과 같이 mysql 명령어 실행
+    ```
+    mysql -u root
+    use instagram_db;
+    insert into role (role) values ('ROLE_USER');
+    ```
+
+</div>
+</details>
+
 ## 사용 스택
 
 - JavaScript
